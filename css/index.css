@@ -1,0 +1,688 @@
+    /*Globales*/
+    
+    * {
+        margin: 0%;
+        padding: 0%;
+    }
+    /*paleta de colores*/
+    
+     :root {
+        --white: #ffffff;
+        --black: #212121;
+        --primario: rgb(236, 222, 157);
+        --secundario: #110e0e;
+        --terciario: rgb(207, 147, 90);
+    }
+    /*main General*/
+    
+    html {
+        font-size: 62.5%;
+    }
+    
+    .bodyIndex {
+        padding: 0%;
+        margin-bottom: 0%;
+        background-image: url(../html/imagenes/background.jpg);
+        display: grid;
+        grid-template-areas: "nav main" "nav main" "footer footer";
+        grid-template-columns: 10% auto;
+        grid-template-rows: 20% auto;
+        position: absolute;
+        height: 100vh;
+    }
+    /*navegacion principal*/
+    
+    .flex-container {
+        background-color: #333333;
+        color: var(--white);
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        grid-area: nav;
+        height: 100%;
+        width: fit-content;
+        align-content: flex-start;
+    }
+    /* cambiar orientacion a vertical en pantalla chica*/
+    
+    @media only screen and (max-width: 768px) {
+        .flex-container .logo {
+            width: 4rem;
+            height: 4rem;
+            margin: 1rem;
+        }
+        .flex-container .logo img {
+            width: 4rem;
+            height: 4rem;
+        }
+        .secciondeInicio .texto {
+            font-size: 1.1rem
+        }
+        .botonera .linkbarra {
+            font-size: 1rem;
+            padding: 1rem;
+            margin: 1rem;
+        }
+    }
+    
+    .logo {
+        background-color: var(--white);
+        border-radius: 45%;
+        width: 6rem;
+        height: 6rem;
+        margin-top: 4rem;
+    }
+    
+    .logo img {
+        width: 6rem;
+        height: 6rem;
+    }
+    
+    .linkbarra {
+        background-color: #333333;
+        color: #f9b000;
+        font-size: 2rem;
+        margin: 2rem;
+        text-decoration: none;
+        padding: 1vh;
+        text-align: center;
+        width: 8vw;
+        height: 8vh;
+    }
+    
+    .linkbarra:visited {
+        color: var(--primario);
+    }
+    
+    .linkbarra:hover {
+        color: var(--primario);
+        background-color: var(--secundario);
+        border-radius: 30%;
+    }
+    
+    .botonera {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    /* comienza main*/
+    
+    .mainIndex {
+        grid-area: main;
+    }
+    
+    .containerIndex {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+        align-items: center;
+    }
+    
+    .imgcentral {
+        margin: auto;
+        padding: auto;
+        display: block;
+    }
+    
+    .imgcentral img {
+        width: 40vw;
+        height: auto;
+    }
+    
+    .texto {
+        display: flex;
+        padding: 2rem;
+        font-size: 2rem;
+        text-align: center;
+        font-family: 'Vollkorn', serif;
+        color: var(--primario);
+    }
+    
+    .secciondeInicio {
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+        width: 65%;
+        height: auto;
+        background-color: var(--black);
+        opacity: 75%;
+    }
+    
+    .secciondeInicio:hover {
+        background-color: var(--secundario);
+        color: var(--primario);
+        transition: background-color whidth"100%" 2s ease-in-out;
+        opacity: 90%;
+    }
+    /*footer*/
+    
+    #redessociales {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        background-color: var(--secundario);
+        width: 100%;
+        height: 3.5rem;
+        bottom: 0;
+        position: relative;
+    }
+    
+    .icoimg {
+        height: 2.5rem;
+        width: 2.5rem;
+        padding: 0.5rem;
+    }
+    /*
+* ==========================================
+* CONTACT FORM STARTS
+* ==========================================
+*/
+    
+    #bodyContacto {
+        padding: 0%;
+        margin-bottom: 0%;
+        background-image: url(../html/imagenes/background.jpg);
+        display: grid;
+        grid-template-columns: 10% 88%;
+        height: 100vh;
+        width: 100vw;
+        grid-template-areas: "nav main" "nav main" "footer footer";
+        grid-column-gap: 1.5%;
+    }
+    
+    @media only screen and (max-width: 768px) {
+        #bodyContacto .mainContacto h3 b {
+            font-size: 1.5rem;
+            letter-spacing: 0;
+        }
+        #bodyContacto .mainContacto h2 {
+            font-size: 2.5rem;
+        }
+        #bodyContacto .mainContacto {
+            margin-top: -20%;
+            padding-left: 2rem;
+            height: fit-content;
+            width: 25rem;
+        }
+        #bodyContacto .mainContacto .contact-form {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+            opacity: 80%;
+        }
+        #bodyContacto .mainContacto .contact-form .rs1-wrap-input {
+            width: auto;
+        }
+    }
+    
+    .mainContacto {
+        grid-area: main;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80%;
+        width: auto;
+    }
+    
+    footer {
+        grid-area: footer;
+    }
+    
+    .contact-form {
+        margin-top: 5rem;
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background-color: var(--white);
+        padding: 1.5rem;
+        opacity: 85%;
+    }
+    
+    .mainContacto h2 {
+        font-size: 3.5rem;
+        font-family: 'Righteous';
+        color: var(--secundario);
+        text-align: center;
+        text-transform: uppercase;
+    }
+    
+    .mainContacto h3 {
+        font-size: 1.8rem;
+        font-family: 'Righteous';
+        color: var(--secundario);
+        text-align: center;
+        margin-top: 8rem;
+        letter-spacing: 2rem;
+        text-transform: uppercase;
+    }
+    
+    .wrap-input {
+        width: 100%;
+        position: relative;
+        border-bottom: 0.5rem solid var(--white);
+        padding-bottom: 1rem;
+        margin-bottom: 3rem;
+    }
+    
+    .rs1-wrap-input {
+        width: calc((100% - 5rem) / 3);
+    }
+    
+    .label-input {
+        font-family: "Roboto";
+        font-size: 15px;
+        color: var(--secundario);
+        line-height: 1.5;
+        padding-left: 5px;
+    }
+    
+    .inputContact {
+        display: block;
+        width: 100%;
+        background: transparent;
+        font-family: "Roboto";
+        font-size: 18px;
+        color: #555555;
+        line-height: 1.2;
+        padding: 0 5px;
+    }
+    
+    .focus-inputContact {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+    }
+    
+    .focus-inputContact::before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        transition: all 0.4s;
+        background: #ff4b5a;
+    }
+    
+    .inputContact:focus+.focus-inputContact::before {
+        width: 100%;
+    }
+    
+    .has-val.inputContact+.focus-inputContact::before {
+        width: 100%;
+    }
+    
+    input.inputContact {
+        height: 40px;
+    }
+    
+    textarea.inputContact {
+        min-height: 110px;
+        padding-top: 9px;
+        padding-bottom: 13px;
+    }
+    
+    .container-btnEnviar {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: -25px;
+        justify-content: center;
+    }
+    
+    .btnEnviar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        min-width: 160px;
+        height: 50px;
+        background-color: rgb(248, 176, 0);
+        border-radius: 25px;
+        font-family: 'Poppins';
+        font-size: 16px;
+        color: #fff;
+        line-height: 1.2;
+        transition: all 0.4s;
+        box-shadow: 0px 0px 10px 0px rgba(255, 75, 90, 0.5);
+    }
+    
+    .btnEnviar:hover {
+        background-color: var(--secundario);
+        box-shadow: 0px 0px 10px 0px rgba(51, 51, 51, 0.5);
+        transform: translateX(10px);
+    }
+    
+    .validate-input {
+        position: relative;
+    }
+    /*
+  * ==========================================
+  * CONTACT FORM ENDS
+  * ==========================================
+  */
+    /*Galeria de Imagenes*/
+    
+    .bodyGaleria {
+        padding: 0%;
+        margin-bottom: 0%;
+    }
+    
+    .mainGaleria {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .tituloGaleria {
+        font-weight: 400;
+        text-align: center;
+        padding: 2rem 0;
+        font-family: Brush Script MT;
+        font-size: 4rem;
+    }
+    
+    .linea {
+        background: #550b51;
+        height: 0.5rem;
+        width: 100%;
+    }
+    
+    .galeria {
+        display: grid;
+        /*esto hace que la img se agrande*/
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        width: 95%;
+        margin: auto;
+        grid-gap: 10px;
+        padding: 4rem 0;
+        overflow: hidden;
+    }
+    
+    .galeria>a {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    }
+    
+    .galeria img {
+        width: 100%;
+        vertical-align: top;
+        height: 300px;
+        object-fit: cover;
+        /*esto hace que no pida definicion de la imagen*/
+        transition: transform 0.5s;
+    }
+    /*esto hace que cuando el mouse pase por arriba cambie la img*/
+    
+    .galeria:hover img {
+        filter: blur(2px);
+        /*esto hace que se distorcione la img*/
+        transform: rotate(10deg) scale(1.3);
+    }
+    
+    .light-box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, .5);
+        transition: transform .3s ease-in-out;
+        width: 100%;
+        height: 100vh;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        transform: scale(0);
+    }
+    
+    .light-box img {
+        width: 75vw;
+        max-height: 70vh;
+    }
+    
+    .light-box:target {
+        transform: scale(1);
+    }
+    
+    .close {
+        display: block;
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        text-decoration: none;
+        color: #fff;
+        background: #851919;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 50%;
+    }
+    
+    .next {
+        display: block;
+        background: #851919;
+        color: #fff;
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        text-decoration: none;
+        text-align: center;
+    }
+    /*--------Empieza Tienda--------*/
+    
+    .bodyTienda {
+        padding: 0%;
+        margin-bottom: 0%;
+    }
+    
+    .containerTienda {
+        display: grid;
+        width: 95%;
+        margin: auto;
+        grid-gap: 10px;
+        padding: 4rem 0;
+        overflow: hidden;
+    }
+    
+    .galeriaTienda {
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .mainTienda {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .galeriaTienda>article {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+        height: 250px;
+        width: 250px;
+        padding: 10px;
+        margin-right: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .galeriaTienda>article div {
+        width: 100%;
+        vertical-align: top;
+        height: 200px;
+        object-fit: cover;
+        /*esto hace que no pida definicion de la imagen*/
+        transition: transform 0.5s;
+    }
+    
+    .galeriaTienda>article input {
+        margin-right: 2.5rem;
+        margin-top: 1rem;
+    }
+    
+    #item1 {
+        background-size: cover;
+        height: 17rem;
+        width: 20rem;
+        background-image: url(../html/imagenes/uno.jpg);
+    }
+    
+    #item2 {
+        background-size: cover;
+        height: 17rem;
+        width: 20rem;
+        background-image: url(../html/imagenes/dos.jpg);
+    }
+    
+    #item3 {
+        background-size: cover;
+        height: 17rem;
+        width: 20rem;
+        background-image: url(../html/imagenes/tres.jpg);
+    }
+    
+    #item4 {
+        background-size: cover;
+        height: 17rem;
+        width: 20rem;
+        background-image: url(../html/imagenes/cuatro.jpg);
+    }
+    
+    #item5 {
+        background-size: cover;
+        height: 17rem;
+        width: 20rem;
+        background-image: url(../html/imagenes/cinco.jpg);
+    }
+    
+    #item6 {
+        background-size: cover;
+        height: 17rem;
+        width: 20rem;
+        background-image: url(../html/imagenes/seis.jpg);
+    }
+    
+    div>p {
+        position: absolute;
+        width: 20rem;
+        height: 17rem;
+        background-color: rgba(0, 0, 0, .5);
+        color: var(--primario);
+        transition: opacity 0.2s;
+        opacity: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    div>p:hover {
+        opacity: 1;
+    }
+    /*---------
+-----------*/
+    /*-----------Termina Tienda--
+/*
+
+
+
+/*-----Empieza Carrito de Compras--------*/
+    
+    .containerCarrito {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .tablaCarrito {
+        font-size: large;
+    }
+    
+    table {
+        width: 100%;
+        table-layout: auto;
+    }
+    
+    .tbl-header {
+        text-align: center;
+    }
+    
+    .tbl-content {
+        height: 300px;
+        overflow-x: auto;
+        margin-top: 0px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    th {
+        padding: 20px 15px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 2.5rem;
+        color: var(--black);
+        font-family: Brush Script MT;
+    }
+    
+    td {
+        padding: 15px;
+        text-align: left;
+        vertical-align: middle;
+        font-weight: 300;
+        font-size: 3rem;
+        color: var(--black);
+        border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+    }
+    
+    .imgTd {
+        width: 10rem;
+        height: 10rem;
+    }
+    
+    .total {
+        display: grid;
+        height: 2rem;
+        width: 60%;
+        margin-top: 15px;
+        margin-left: 500px;
+        margin-bottom: 8rem;
+        size: 30rem;
+        align-items: flex-end;
+    }
+    
+    .total>span {
+        font-size: 1.5rem;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: var(--white);
+        background-color: var(--black);
+    }
+    
+    #btnPagar {
+        background-color: var(--secundario);
+        color: var(--white)
+    }
+    
+    #cantidadCarrito {
+        size: 3rem;
+    }
