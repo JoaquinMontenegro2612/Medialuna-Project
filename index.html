@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan de trabajo · Joaquín Montenegro</title>
+<style>
+:root{
+  --bg:#0a0e11; --panel:#10171c; --panel-2:#141d23; --line:#1e2b33;
+  --ink:#e9f0f2; --muted:#8fa3ab; --dim:#647b84;
+  --amber:#ffb057; --green:#4ec9a0; --red:#ff7a6b; --blue:#6fb3ff;
+  --r:14px; --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:400 16px/1.62 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--amber);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;background:rgba(10,14,17,.88);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--line);
+}
+nav .wrap{display:flex;align-items:center;gap:6px;height:56px;overflow-x:auto;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav .brand{font-weight:800;font-size:14px;letter-spacing:.02em;white-space:nowrap;margin-right:14px;color:var(--ink)}
+nav .brand span{color:var(--amber)}
+nav a.lnk{
+  font-size:13.5px;color:var(--muted);padding:7px 11px;border-radius:999px;white-space:nowrap;
+}
+nav a.lnk:hover{background:var(--panel-2);color:var(--ink);text-decoration:none}
+nav a.lnk.on{background:var(--amber);color:#1a1206;font-weight:700}
+
+/* ---------- hero ---------- */
+header.hero{padding:52px 0 34px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+header.hero:before{
+  content:"";position:absolute;inset:-40% 40% 40% -20%;
+  background:radial-gradient(circle at 30% 40%,rgba(255,176,87,.13),transparent 62%);
+  pointer-events:none;
+}
+.eyebrow{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:700;margin:0 0 12px}
+h1{font-size:clamp(30px,5vw,50px);line-height:1.06;letter-spacing:-.025em;margin:0 0 16px;font-weight:800}
+h1 em{font-style:normal;color:var(--amber)}
+.lede{font-size:17.5px;color:var(--muted);max-width:64ch;margin:0 0 26px}
+.lede b{color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:8px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.stat .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.stat .v{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-top:5px}
+.stat .s{font-size:12.5px;color:var(--muted);margin-top:2px}
+.stat.amber .v{color:var(--amber)} .stat.green .v{color:var(--green)} .stat.red .v{color:var(--red)}
+
+/* ---------- sections ---------- */
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+h2{font-size:clamp(23px,3vw,31px);letter-spacing:-.02em;margin:0 0 8px;font-weight:800;line-height:1.15}
+h2 .num{color:var(--dim);font-weight:700;margin-right:10px;font-variant-numeric:tabular-nums}
+.sub{color:var(--muted);margin:0 0 26px;max-width:70ch}
+h3{font-size:17.5px;margin:30px 0 10px;font-weight:750;letter-spacing:-.01em}
+h4{font-size:14px;margin:0 0 6px;font-weight:750}
+p{margin:0 0 12px}
+.small{font-size:13.5px;color:var(--muted)}
+.tiny{font-size:12.5px;color:var(--dim)}
+
+/* ---------- cards ---------- */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:19px 20px}
+.card.warn{border-color:#4a3020;background:linear-gradient(180deg,#1a1310,var(--panel))}
+.card.good{border-color:#1c3d34;background:linear-gradient(180deg,#0f1a17,var(--panel))}
+.card .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  padding:3px 8px;border-radius:6px;margin-bottom:9px}
+.tag.t-red{background:rgba(255,122,107,.14);color:var(--red)}
+.tag.t-amb{background:rgba(255,176,87,.14);color:var(--amber)}
+.tag.t-grn{background:rgba(78,201,160,.14);color:var(--green)}
+.tag.t-blu{background:rgba(111,179,255,.14);color:var(--blue)}
+
+/* ---------- copy blocks ---------- */
+.copy{position:relative;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;margin:12px 0 22px}
+.copy .hd{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:9px 12px 9px 15px;border-bottom:1px solid var(--line);background:#111a1f;border-radius:12px 12px 0 0}
+.copy .hd .lbl{font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.copy .hd .lim{font-size:11.5px;color:var(--dim)}
+.copy pre{
+  margin:0;padding:16px 15px;white-space:pre-wrap;word-wrap:break-word;
+  font:400 14px/1.62 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#dbe7ea;
+  max-height:none;
+}
+.copy pre.mono-sm{font-size:13.4px}
+button.cp{
+  font:700 12px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.03em;
+  background:var(--amber);color:#1a1206;border:0;border-radius:7px;padding:8px 12px;cursor:pointer;
+  transition:.15s;white-space:nowrap
+}
+button.cp:hover{filter:brightness(1.1)}
+button.cp.done{background:var(--green);color:#04120d}
+
+/* ---------- lists ---------- */
+ul.clean{list-style:none;padding:0;margin:0}
+ul.clean li{position:relative;padding:0 0 9px 20px;color:var(--muted);font-size:15px}
+ul.clean li:before{content:"→";position:absolute;left:0;color:var(--amber);font-weight:700}
+ul.clean li b{color:var(--ink)}
+ol.prob{counter-reset:p;list-style:none;padding:0;margin:0;display:grid;gap:11px}
+ol.prob li{counter-increment:p;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--red);
+  border-radius:10px;padding:14px 17px 14px 52px;position:relative;font-size:14.8px;color:var(--muted)}
+ol.prob li:before{content:counter(p);position:absolute;left:16px;top:13px;font-weight:800;color:var(--red);font-size:15px}
+ol.prob li b{color:var(--ink);display:block;margin-bottom:2px;font-size:15.4px}
+ol.prob li .fix{display:block;margin-top:6px;color:var(--green);font-size:13.8px}
+ol.prob li .fix:before{content:"✓ ";font-weight:800}
+
+/* ---------- tables ---------- */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:14.2px;min-width:520px}
+th{text-align:left;padding:11px 15px;background:#0d1418;color:var(--muted);font-size:11.7px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:800;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:11px 15px;border-bottom:1px solid #17242b;color:var(--muted);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+td.hi{color:var(--green);font-weight:700}
+tr.goal td{background:rgba(255,176,87,.055)}
+tr.goal td:first-child{box-shadow:inset 3px 0 0 var(--amber)}
+
+/* ---------- checklists ---------- */
+.chk{display:flex;gap:11px;align-items:flex-start;padding:9px 12px;border-radius:9px;cursor:pointer;
+  font-size:14.8px;color:var(--muted);transition:.12s}
+.chk:hover{background:var(--panel-2)}
+.chk input{appearance:none;width:19px;height:19px;flex:0 0 19px;margin:2px 0 0;border:1.5px solid #2c3d46;
+  border-radius:5px;background:transparent;cursor:pointer;position:relative;transition:.12s}
+.chk input:checked{background:var(--green);border-color:var(--green)}
+.chk input:checked:after{content:"";position:absolute;left:5.5px;top:1.5px;width:5px;height:10px;
+  border:2px solid #04120d;border-top:0;border-left:0;transform:rotate(42deg)}
+.chk input:checked ~ span{color:var(--dim);text-decoration:line-through}
+.week{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px 20px;margin-bottom:14px}
+.week .wk-hd{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:4px}
+.week .wk-hd .t{font-weight:800;font-size:16.5px}
+.week .wk-hd .d{font-size:12.5px;color:var(--dim);white-space:nowrap}
+.week .goal-line{font-size:13.5px;color:var(--green);margin:8px 0 0;padding-top:10px;border-top:1px dashed var(--line)}
+.daylbl{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);
+  margin:14px 0 2px}
+.progress{position:sticky;top:56px;z-index:40;background:rgba(10,14,17,.94);backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:11px 0;
+  margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding-left:calc(50vw - 50%);padding-right:calc(50vw - 50%)}
+.progress .wrap{display:flex;align-items:center;gap:14px}
+.bar{flex:1;height:8px;background:#16232a;border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--amber),var(--green));
+  border-radius:99px;transition:width .3s}
+.progress .n{font-size:13px;font-weight:800;color:var(--amber);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* ---------- price cards ---------- */
+.price{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px;position:relative}
+.price.star{border-color:#5a4520;background:linear-gradient(180deg,#1a1610,var(--panel));box-shadow:0 0 0 1px rgba(255,176,87,.12)}
+.price .pf{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);font-weight:800}
+.price h4{font-size:18px;margin:6px 0 4px;letter-spacing:-.01em}
+.price .amount{font-size:31px;font-weight:800;letter-spacing:-.03em;margin:8px 0 2px}
+.price .amount small{font-size:13px;color:var(--dim);font-weight:600;letter-spacing:0}
+.price ul{list-style:none;padding:0;margin:14px 0 0;font-size:14px;color:var(--muted)}
+.price ul li{padding:5px 0 5px 19px;position:relative}
+.price ul li:before{content:"·";position:absolute;left:7px;color:var(--amber);font-weight:900}
+.price .recur{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--green);font-weight:700}
+
+/* ---------- misc ---------- */
+.note{border-left:3px solid var(--amber);background:rgba(255,176,87,.06);border-radius:0 10px 10px 0;
+  padding:14px 18px;margin:18px 0;font-size:14.6px;color:var(--muted)}
+.note b{color:var(--ink)}
+.note.danger{border-color:var(--red);background:rgba(255,122,107,.06)}
+.note.good{border-color:var(--green);background:rgba(78,201,160,.06)}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;
+  background:var(--panel-2);border:1px solid var(--line);color:var(--muted);margin:0 6px 6px 0}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 4px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:#1a1206;font-weight:800;
+  font-size:14px;padding:11px 17px;border-radius:9px;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid #2a3a43}
+.btn:hover{filter:brightness(1.08);text-decoration:none}
+footer{padding:44px 0 64px;color:var(--dim);font-size:13.5px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14.4px}
+.kv dt{color:var(--dim);font-weight:700}
+.kv dd{margin:0;color:var(--muted)}
+hr.soft{border:0;border-top:1px solid var(--line);margin:30px 0}
+@media(max-width:640px){
+  header.hero{padding:36px 0 26px}
+  section{padding:38px 0}
+  .copy pre{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">PLAN <span>3.500</span></div>
+    <a class="lnk" href="#verdad">La verdad</a>
+    <a class="lnk" href="#diagnostico">Diagnóstico</a>
+    <a class="lnk" href="#linkedin">LinkedIn</a>
+    <a class="lnk" href="#infojobs">InfoJobs</a>
+    <a class="lnk" href="#jobtoday">JobToday</a>
+    <a class="lnk" href="#cv">CV</a>
+    <a class="lnk" href="#oferta">Oferta</a>
+    <a class="lnk" href="#dinero">Dinero</a>
+    <a class="lnk" href="#plan30">Plan 30 días</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Joaquín Montenegro · Patraix, València · nov 2026</p>
+    <h1>De cero a <em>3.500 €/mes</em><br>trabajando desde casa</h1>
+    <p class="lede">
+      Tienes cuatro CVs y tres carreras distintas: <b>dos años y medio de desarrollo de software</b> (Power Platform,
+      Dynamics 365, React, QA), una <b>cafetería propia</b> y <b>más de 30 obras</b>. El problema no es que te
+      falte experiencia: es que nada de eso está colocado donde se ve. Aquí está el plan completo: qué
+      escribir en cada plataforma, qué vender, a quién y por orden.
+    </p>
+    <div class="stats">
+      <div class="stat red">
+        <div class="k">Situación hoy</div>
+        <div class="v">0 €</div>
+        <div class="s">Sin ingresos, sin colchón</div>
+      </div>
+      <div class="stat amber">
+        <div class="k">Objetivo</div>
+        <div class="v">3.500 €/mes</div>
+        <div class="s">= 55-60k bruto o ~4.500 € facturados</div>
+      </div>
+      <div class="stat green">
+        <div class="k">Tu activo real</div>
+        <div class="v">Power Platform</div>
+        <div class="s">Nicho con más ofertas que gente</div>
+      </div>
+      <div class="stat">
+        <div class="k">Primera meta</div>
+        <div class="v">30 días</div>
+        <div class="s">500-900 € cobrados + nómina remota en marcha</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ VERDAD ============ -->
+<section id="verdad">
+  <div class="wrap">
+    <h2><span class="num">01</span>La verdad, en 60 segundos</h2>
+    <p class="sub">Te lo digo claro porque perseguir 3.500 € sin saber el camino te va a costar dos meses y la moral.</p>
+
+    <div class="grid g2">
+      <div class="card warn">
+        <span class="tag t-red">Lo que no te va a pasar</span>
+        <h4>3.500 € el mes que viene</h4>
+        <p class="small" style="margin:0">3.500 € netos es un <b>salario de senior</b> en España (55-60k bruto). Como autónomo, para que te queden 3.500 limpios necesitas <b>facturar ~4.500 €/mes</b>. Eso no se firma en una semana ni con el mejor CV del mundo. Cualquiera que te diga lo contrario te está vendiendo algo.</p>
+      </div>
+      <div class="card good">
+        <span class="tag t-grn">Lo que sí puedes tener</span>
+        <h4>Un camino de 12-18 meses, con dinero desde el mes 1</h4>
+        <p class="small" style="margin:0">Caja rápida en 1-3 semanas (eventos, obra, paro). <b>Nómina remota en 1-4 meses</b> (1.400-2.200 €). Y un negocio de automatización para gremios que, si funciona, <b>te da los 3.500 sin jefe antes que la nómina</b>. Los tres canales a la vez.</p>
+      </div>
+    </div>
+
+    <h3>Los tres canales (no elijas uno: van los tres en paralelo)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Canal</th><th>Para qué</th><th>Cuánto da</th><th>Cuándo</th></tr></thead>
+        <tbody>
+          <tr><td><b>1. Caja rápida</b><br><span class="tiny">JobToday · eventos · obra</span></td><td>No hundirte mientras construyes</td><td>400 – 1.200 €/mes</td><td>1 – 3 semanas</td></tr>
+          <tr><td><b>2. Nómina remota</b><br><span class="tiny">LinkedIn · InfoJobs · Tecnoempleo</span></td><td>Estabilidad, cotizar, base para crecer</td><td>1.400 – 2.800 € netos</td><td>1 – 4 meses</td></tr>
+          <tr class="goal"><td><b>3. Freelance de nicho</b><br><span class="tiny">Gremios y pymes de València</span></td><td>Escalar hasta los 3.500 y más allá</td><td>0 → 2.000 €+</td><td>2 semanas → 12 meses</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <b>La idea que lo cambia todo:</b> eres probablemente la única persona en València que puede venderle
+      tecnología a un gremio hablando su idioma. Un consultor de Madrid le vende "transformación digital"; tú
+      le dices: <i>"si sigues haciendo los presupuestos a mano, pierdes dos horas por presupuesto y la mitad no
+      te contestan"</i>. Eso es otra conversación. Ese es tu nicho.
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIAGNOSTICO ============ -->
+<section id="diagnostico">
+  <div class="wrap">
+    <h2><span class="num">02</span>Diagnóstico de tus 4 CVs</h2>
+    <p class="sub">Buen material, mal colocado. Diez problemas concretos y cómo se arreglan. Los cuatro primeros son los que te están costando entrevistas.</p>
+
+    <ol class="prob">
+      <li><b>La experiencia técnica está enterrada</b>
+        En tu CV de JobToday dedicas 15 líneas a la descripción genérica del puesto de Tigloo, pero no aparece "Power Apps" ni "Power Automate" en el titular. Los reclutadores buscan palabras exactas.
+        <span class="fix">Las herramientas concretas van en las 3 primeras líneas.</span></li>
+
+      <li><b>Cero cifras en la parte técnica</b>
+        Lo único medible de todo tu material es "más de 30 obras". Ni usuarios, ni clientes, ni tiempo ahorrado, ni tamaño de equipo.
+        <span class="fix">Añade números reales aunque sean modestos. Si no los recuerdas, estima a la baja.</span></li>
+
+      <li><b>Tres CVs que compiten entre sí</b>
+        Reformas, hostelería y "polivalente". Un reclutador que lee dos no ve a un especialista.
+        <span class="fix">Un CV por sector, y una versión oficial para remoto (la que te he hecho).</span></li>
+
+      <li><b>"Perfil polivalente, resolutivo y con experiencia en diferentes sectores"</b>
+        Es la frase más común de los CVs españoles y en tecnología se lee como "no domina nada".
+        <span class="fix">Abre con la especialidad y la prueba: "año y medio construyendo soluciones sobre Power Platform y Dynamics 365".</span></li>
+
+      <li><b>Las "Certificaciones" son una nube de etiquetas</b>
+        <span class="tiny">ceramicas · pintura · pladur · reformas pared</span> — no son certificaciones. Resta credibilidad en dos segundos.
+        <span class="fix">Título + entidad + año, o va en "Conocimientos".</span></li>
+
+      <li><b>Fechas solapadas sin explicación</b>
+        Tigloo (ene–dic 2024) y Medialuna (oct 2024–dic 2025) se pisan tres meses. Y hay un hueco oct 2023 – ene 2024.
+        <span class="fix">Una línea: "compaginado con mi última etapa como desarrollador". Con explicación, deja de importar.</span></li>
+
+      <li><b>Estás en paro desde octubre y no aparece</b>
+        Un mes no es problema, pero un CV con un vacío es peor que uno con "portfolio en construcción" o "formación en curso".
+        <span class="fix">Rellénalo con lo que estés haciendo este mes: Microsoft Learn, demo, clientes.</span></li>
+
+      <li><b>No hay ni un enlace: GitHub, LinkedIn, portfolio</b>
+        Tus CVs no tienen ninguna URL técnica. Para un puesto de desarrollo remoto, un GitHub con 2 repos es mejor que ninguno.
+        <span class="fix">Hoy: GitHub + URL limpia de LinkedIn + una landing.</span></li>
+
+      <li><b>El diseño de tus CVs rompe los ATS</b>
+        Dos columnas y texto justificado. Cuando extraje el texto de tus PDFs salió desordenado y con letras separadas: eso es literalmente lo que ve un sistema de filtrado automático.
+        <span class="fix">Versión de una columna, texto plano, sin tablas (ya la tienes en .docx y .pdf).</span></li>
+
+      <li><b>Ni una palabra sobre trabajo en remoto</b>
+        Si la oferta es remota, el CV tiene que responder a la duda silenciosa: <i>¿este tío sabe trabajar sin que nadie le vigile?</i>
+        <span class="fix">Una línea explícita, ya incluida en el CV nuevo.</span></li>
+    </ol>
+
+    <h3>Lo que NO hay que cambiar</h3>
+    <ul class="clean">
+      <li><b>Tu tono directo y honesto.</b> No exageras. Eso es raro y suma.</li>
+      <li><b>"Más de 30 obras".</b> Es tu mejor dato y es verificable.</li>
+      <li><b>El vídeo de presentación.</b> Muy poca gente lo tiene.</li>
+      <li><b>La mezcla negocio + técnica.</b> No es un defecto: es tu nicho y tu ventaja frente a cualquier junior de bootcamp.</li>
+    </ul>
+
+    <h3>Si solo tienes 2 horas hoy</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Tiempo</th><th>Qué</th></tr></thead>
+        <tbody>
+          <tr><td><b>45 min</b></td><td>LinkedIn con el titular y el extracto nuevos + "En remoto" activado</td></tr>
+          <tr><td><b>30 min</b></td><td>Sustituir "Sobre mí" y "Certificaciones" en JobToday</td></tr>
+          <tr><td><b>20 min</b></td><td>Subir el CV nuevo a InfoJobs y crear las 7 alertas</td></tr>
+          <tr><td><b>25 min</b></td><td>Abrir GitHub, subir 1 proyecto y pegar la URL en los tres perfiles</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LINKEDIN ============ -->
+<section id="linkedin">
+  <div class="wrap">
+    <h2><span class="num">03</span>LinkedIn</h2>
+    <p class="sub">Es la plataforma nº1 para trabajo en remoto. Los reclutadores buscan por <b>palabras clave</b>, no porque suene bonito. Todo esto está escrito para que te encuentren buscando "Power Platform", "Power Automate", "Dynamics 365" y "remoto".</p>
+
+    <h3>1 · Titular (máx. 220 caracteres)</h3>
+    <div class="copy">
+      <div class="hd"><span class="lbl">Headline · opción A (recomendada)</span><button class="cp" data-copy="li-head">Copiar</button></div>
+      <pre id="li-head">Consultor Power Platform &amp; Dynamics 365 | Automatizo procesos para pymes | React + QA | Perfil híbrido negocio + técnico | Abierto a remoto</pre>
+    </div>
+    <div class="copy">
+      <div class="hd"><span class="lbl">Headline · opción B (si priorizas el nicho)</span><button class="cp" data-copy="li-head-b">Copiar</button></div>
+      <pre id="li-head-b">Consultor Power Platform | Digitalizo gremios, reformas y hostelería | Power Apps · Power Automate · Dynamics 365 | React/QA | Remoto</pre>
+    </div>
+
+    <h3>2 · Extracto / "Acerca de" (máx. 2.600 caracteres)</h3>
+    <div class="copy">
+      <div class="hd"><span class="lbl">About</span><button class="cp" data-copy="li-about">Copiar</button></div>
+      <pre id="li-about">Hay dos tipos de perfiles en tecnología: los que entienden el software y los que entienden el negocio. Yo he hecho las dos cosas.
+
+Llevo dos años y medio en consultoría y producto, con año y medio centrado en Microsoft Power Platform y Dynamics 365: Power Apps, Power Automate, entidades, formularios, flujos, integraciones y personalización de CRM. Antes pasé por desarrollo frontend con React y por QA (pruebas funcionales, móviles y de backend).
+
+Pero antes de programar, monté y gestioné mis propios negocios: una cafetería como socio y encargado (compras, proveedores, stock, personal, cartas, márgenes) y más de 30 obras de reforma en España coordinando materiales, equipos y plazos.
+
+Eso significa que cuando me pides automatizar un proceso, entiendo lo que hay detrás: quién lo va a usar, cuánto cuesta y qué pasa si falla un viernes a las 18:00.
+
+QUÉ PUEDO HACER POR TU EMPRESA
+→ Automatizar procesos con Power Automate: aprobaciones, avisos, correos, generación de documentos, integraciones entre sistemas.
+→ Construir apps de negocio con Power Apps para sustituir Excel, papel y WhatsApp.
+→ Personalizar y mantener Dynamics 365 / Dynamics CRM (entidades, formularios, plugins .NET/C#, JavaScript).
+→ Desarrollar interfaces y landings con React + JavaScript.
+→ Asegurar calidad: pruebas funcionales, móviles y de regresión; Azure DevOps, Jira, Git.
+
+DÓNDE APORTO MÁS VALOR
+Pymes, instaladoras, constructoras, estudios, clínicas y negocios de obra y hostelería que siguen trabajando con Excel y WhatsApp. Hablo su idioma porque he estado en su lado del mostrador y en la obra: no tengo que preguntar qué es un presupuesto, un gremio o un escandallo.
+
+BUSCO
+Puesto o proyecto en remoto (o híbrido en Valencia). Español nativo, inglés intermedio (B1-B2), disponibilidad inmediata, permiso B.
+
+Escríbeme por aquí o a joaquinmontenegro2612@gmail.com.</pre>
+    </div>
+
+    <h3>3 · Descripciones de experiencia</h3>
+    <p class="small">Regla: <b>verbo + qué hiciste + con qué tecnología + para qué</b>. Sin "proactivo" ni "resolutivo". Si tienes cifras reales, mételas: multiplican el impacto.</p>
+
+    <div class="copy">
+      <div class="hd"><span class="lbl">Tigloo · Desarrollador Dynamics 365 / Power Platform · ene 2024 – dic 2024</span><button class="cp" data-copy="exp-tigloo">Copiar</button></div>
+      <pre id="exp-tigloo">Desarrollo y personalización de soluciones sobre Microsoft Dynamics 365 y Power Platform para adaptar el CRM a los procesos reales de cada cliente.
+
+· Configuración y personalización de entidades, formularios, flujos de trabajo y procesos de negocio en Dynamics 365.
+· Automatización de procesos internos con Power Automate y construcción de apps de negocio con Power Apps.
+· Integraciones entre Dynamics 365 y otros sistemas empresariales con Power Automate y Azure Integration Services.
+· Traducción de requisitos funcionales a soluciones técnicas junto a equipos multidisciplinares (funcional + técnico).
+· Pruebas unitarias y de integración, soporte técnico post-implantación y documentación de las soluciones.</pre>
+    </div>
+
+    <div class="copy">
+      <div class="hd"><span class="lbl">Create Ape · Desarrollador React JS / QA Engineer · jun 2022 – abr 2023</span><button class="cp" data-copy="exp-ape">Copiar</button></div>
+      <pre id="exp-ape">Doble rol: desarrollo frontend y aseguramiento de calidad del producto.
+
+· Desarrollo frontend con React, JavaScript, Vite, Chakra UI y Material UI, con Firebase como backend.
+· QA Engineer: pruebas funcionales, de backend y móviles (iOS/Android), depuración y diseño/ejecución de casos de prueba (Jira, TestLodge).
+· Despliegue y configuración de entornos con Azure DevOps, Bitbucket y Git.</pre>
+    </div>
+
+    <div class="copy">
+      <div class="hd"><span class="lbl">Softtek · Desarrollador Dynamics CRM · dic 2020 – jun 2021</span><button class="cp" data-copy="exp-softtek">Copiar</button></div>
+      <pre id="exp-softtek">Desarrollo y personalización sobre Microsoft Dynamics CRM 2016/365 on-premise.
+
+· Plugins en .NET Framework (C#) con el SDK de Dynamics CRM.
+· Personalización de formularios con JavaScript.
+· Visual Studio, XRM ToolBox, GitHub y Azure DevOps. Metodología Scrum.</pre>
+    </div>
+
+    <div class="copy">
+      <div class="hd"><span class="lbl">Medialuna · Fundador / Socio y encargado · oct 2024 – dic 2025</span><button class="cp" data-copy="exp-media">Copiar</button></div>
+      <pre id="exp-media">Fundé y gestioné una cafetería: operación diaria, atención al cliente, caja, administración, compras y relación con proveedores, control de stock, supervisión de personal, armado de cartas y acciones de marketing.
+
+Lo que me llevo: gestión de costes y márgenes con dinero real, trato con clientes difíciles y la experiencia de haber sacado un negocio adelante desde cero.</pre>
+    </div>
+
+    <div class="copy">
+      <div class="hd"><span class="lbl">Experiencity · Reformista (escape rooms) · ene 2026 – oct 2026</span><button class="cp" data-copy="exp-exp">Copiar</button></div>
+      <pre id="exp-exp">Ejecución de reformas para salas de escape: albañilería, pladur, yeso, pintura, alicatado y reparaciones generales, con plazos cerrados ligados a la apertura de cada sala.
+
+· Interpretación de indicaciones y planos, resolución de imprevistos en obra y cuidado de acabados.
+· Coordinación de materiales, pedidos y limpieza/orden de la obra.</pre>
+    </div>
+
+    <h3>4 · Aptitudes (Skills)</h3>
+    <p class="small">Las <b>3 primeras</b> son las que se muestran y pesan más en las búsquedas. Orden exacto:</p>
+    <div class="copy">
+      <div class="hd"><span class="lbl">Orden recomendado</span><button class="cp" data-copy="li-skills">Copiar</button></div>
+      <pre id="li-skills">1. Microsoft Power Platform
+2. Power Automate
+3. Microsoft Dynamics 365
+4. Power Apps
+5. Dynamics CRM
+6. React.js
+7. JavaScript
+8. Firebase
+9. Automatización de procesos
+10. Integración de sistemas
+11. Microsoft Azure
+12. QA (Quality Assurance)
+13. Pruebas funcionales
+14. Jira
+15. Azure DevOps
+16. Git
+17. Scrum
+18. .NET
+19. C#
+20. Consultoría funcional
+21. Transformación digital
+22. Atención al cliente
+23. Gestión de equipos
+24. Gestión de proyectos
+25. Negociación con proveedores</pre>
+    </div>
+
+    <h3>5 · Ajustes que tienes que tocar hoy (5 minutos, gratis)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Ajuste</th><th>Dónde</th><th>Qué poner</th></tr></thead>
+        <tbody>
+          <tr><td><b>URL personalizada</b></td><td>Editar perfil → Editar URL pública</td><td><span class="tiny">linkedin.com/in/joaquin-montenegro</span> (quita los números)</td></tr>
+          <tr><td><b>Abierto a trabajar</b></td><td>Perfil → Open to work</td><td>Power Platform, Consultor Dynamics 365, Frontend, QA · Ubicación: <b>En remoto</b> · solo reclutadores</td></tr>
+          <tr><td><b>Foto</b></td><td>Perfil</td><td>Cara, fondo liso, camisa o camiseta lisa. Sin filtros</td></tr>
+          <tr><td><b>Portada</b></td><td>Perfil</td><td>Banner simple: "Power Platform · Dynamics 365 · Automatización para pymes" (Canva, 1584×396)</td></tr>
+          <tr><td><b>Destacado</b></td><td>Añadir sección → Destacado</td><td>GitHub, tu landing y el vídeo de presentación</td></tr>
+          <tr><td><b>Versión en inglés</b></td><td>Configuración → Idiomas del perfil</td><td>Añade titular y extracto en inglés (reclutadores internacionales)</td></tr>
+          <tr><td><b>Alertas</b></td><td>Empleos</td><td>Power Platform · Dynamics 365 · Power Automate · React · QA, todas con filtro <b>En remoto</b></td></tr>
+          <tr><td><b>Seguir empresas</b></td><td>Búsqueda</td><td>Avanade, Seidor, Encamina, Izertis, Plain Concepts, Sopra Steria, NTT Data, Deloitte, KPMG, Accenture, Capgemini</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note danger"><b>No pagues Premium todavía.</b> Con el perfil optimizado y candidaturas activas no lo necesitas. Si en 3 semanas no tienes ni una respuesta, entonces sí, un mes y lo cancelas.</div>
+
+    <h3>6 · Rutina diaria (30 min, esto es lo que trae trabajo)</h3>
+    <ul class="clean">
+      <li><b>5 candidaturas</b> con filtro "En remoto" + "Últimas 24 h". Siempre con mensaje al reclutador, no solo el botón.</li>
+      <li><b>10 invitaciones</b> a gente con puesto "Consultor Power Platform", "Dynamics 365" o "IT Recruiter" en España.</li>
+      <li><b>3 comentarios útiles</b> en posts de partners de Microsoft y reclutadores tech.</li>
+      <li><b>2 posts por semana</b> con lo que construyes. Un vídeo de 40 segundos vale más que 10 CVs.</li>
+    </ul>
+    <div class="copy">
+      <div class="hd"><span class="lbl">Mensaje al reclutador (personaliza el nombre)</span><button class="cp" data-copy="li-dm">Copiar</button></div>
+      <pre id="li-dm">Hola [Nombre], me interesa la vacante de [puesto]. Tengo experiencia en Power Apps, Power Automate y Dynamics 365 (Tigloo, Softtek) y perfil funcional: hablo con negocio y con técnico. ¿Te paso el CV? Gracias.</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFOJOBS ============ -->
+<section id="infojobs">
+  <div class="wrap">
+    <h2><span class="num">04</span>InfoJobs</h2>
+    <p class="sub">Aquí están las empresas españolas "normales", no solo startups. Tiene filtro de teletrabajo y publica muchas ofertas reales de Power Platform y Dynamics.</p>
+
+    <h3>Datos de perfil</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Campo</th><th>Qué poner</th></tr></thead>
+        <tbody>
+          <tr><td><b>Puesto</b></td><td>Consultor Power Platform / Dynamics 365 · Desarrollo web · Teletrabajo</td></tr>
+          <tr><td><b>Categorías</b></td><td>Informática → Desarrollo de software + Informática → Consultoría / ERP-CRM</td></tr>
+          <tr><td><b>Nivel de estudios</b></td><td>Máster (AIP Barcelona) — no "Bachillerato"</td></tr>
+          <tr><td><b>Años de experiencia</b></td><td><b>3 años</b> (suma solo las etapas técnicas: 2020-21, 2022-23, 2024)</td></tr>
+          <tr><td><b>Salario</b></td><td><b>No lo publiques</b> en el perfil general. Si te obligan: 24.000 – 30.000 € bruto/año y negocias en la llamada</td></tr>
+          <tr><td><b>Disponibilidad</b></td><td>Inmediata · jornada completa · <b>teletrabajo: sí</b> · turnos y fines de semana: sí</td></tr>
+          <tr><td><b>Movilidad</b></td><td>Carnet B · València y área metropolitana</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><b>Truco:</b> InfoJobs te deja tener varios CV y elegir cuál envías en cada oferta. Crea tres: <span class="pill">CV-PowerPlatform</span><span class="pill">CV-DesarrolloWeb</span><span class="pill">CV-AtencionCliente</span> Así no le mandas el de reformas a una oferta de software.</div>
+
+    <h3>Presentación / "Mi perfil" (máx. 2.000 caracteres)</h3>
+    <div class="copy">
+      <div class="hd"><span class="lbl">Presentación InfoJobs</span><button class="cp" data-copy="ij-pres">Copiar</button></div>
+      <pre id="ij-pres">Consultor y desarrollador con experiencia en Microsoft Power Platform y Dynamics 365, con base técnica de frontend (React/JavaScript) y de QA. Perfil híbrido: hablo con el negocio y ejecuto la parte técnica.
+
+He trabajado en consultora y en producto:
+· Dynamics 365 / Power Platform (Tigloo): personalización de entidades, formularios y flujos, automatización con Power Automate, apps con Power Apps, integraciones con Azure Integration Services, pruebas y documentación.
+· Dynamics CRM 2016/365 on-premise (Softtek): plugins en .NET/C#, personalización con JavaScript, Scrum.
+· Frontend y QA (Create Ape): React, JavaScript, Vite, Chakra UI, Material UI, Firebase; pruebas funcionales, de backend y móviles (iOS/Android), Jira, Azure DevOps, Git.
+
+A eso le sumo haber gestionado mis propios negocios (una cafetería como socio y encargado, y más de 30 obras de reforma coordinando equipos, materiales y plazos). Por eso entiendo los procesos que automatizo: presupuestos, compras, stock, proveedores, personal y atención al cliente.
+
+Busco un puesto en remoto (o híbrido en Valencia) como desarrollador o consultor Power Platform / Dynamics 365, desarrollador frontend o QA. Disponibilidad inmediata, permiso B, español nativo e inglés intermedio.
+
+Qué aporto desde el primer día:
+- Automatización de procesos con Power Automate y Power Apps.
+- Personalización y mantenimiento de Dynamics 365 / CRM.
+- Interfaces y landings con React.
+- Pruebas funcionales y control de calidad.
+- Comunicación clara con clientes y equipos no técnicos.</pre>
+    </div>
+
+    <h3>Búsquedas guardadas (créalas hoy con alerta diaria por email)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Búsqueda</th><th>Filtros</th></tr></thead>
+        <tbody>
+          <tr><td><b>Power Platform remoto</b></td><td>"Power Platform" + Teletrabajo + España</td></tr>
+          <tr><td><b>Dynamics 365 remoto</b></td><td>"Dynamics 365" + Teletrabajo</td></tr>
+          <tr><td><b>Power Automate</b></td><td>"Power Automate" + Teletrabajo</td></tr>
+          <tr><td><b>React remoto</b></td><td>"React" + Teletrabajo + último mes</td></tr>
+          <tr><td><b>QA / Tester</b></td><td>"QA" / "Tester" + Teletrabajo</td></tr>
+          <tr><td><b>Soporte técnico</b></td><td>Teletrabajo (plan B: entra rápido)</td></tr>
+          <tr><td><b>Valencia tech</b></td><td>"Desarrollador" + València (híbrido también vale)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small"><b>Cómo aplicar sin quemarte:</b> prioriza ofertas con menos de 3 días y menos de 25 candidatos. Si pone "más de 100 candidatos", solo merece la pena si cumples el 90 % de los requisitos.</p>
+
+    <h3>Cartas de presentación</h3>
+    <div class="copy">
+      <div class="hd"><span class="lbl">A · Oferta de Power Platform / Dynamics</span><button class="cp" data-copy="ij-a">Copiar</button></div>
+      <pre id="ij-a">Hola:
+
+Me interesa el puesto de [PUESTO]. Tengo experiencia directa en Dynamics 365 y Power Platform: en Tigloo trabajé personalizando entidades, formularios y flujos, automatizando procesos con Power Automate, construyendo apps con Power Apps e integrando con Azure Integration Services. Antes, en Softtek, desarrollé plugins en .NET/C# y personalizaciones de formularios sobre Dynamics CRM 2016/365.
+
+Lo que creo que me diferencia: además de la parte técnica, he gestionado negocio propio (una cafetería y más de 30 obras de reforma). Entiendo de presupuestos, compras, stock, proveedores y equipos, así que cuando un cliente me explica su proceso, no necesito que me lo traduzca: sé qué duele y dónde se pierde el tiempo.
+
+Estoy en Valencia, disponible para teletrabajo y con disponibilidad inmediata.
+
+Quedo a disposición para una entrevista.
+
+Un saludo,
+Joaquín Montenegro
+601 580 269 · joaquinmontenegro2612@gmail.com</pre>
+    </div>
+    <div class="copy">
+      <div class="hd"><span class="lbl">B · Oferta de desarrollo web / React</span><button class="cp" data-copy="ij-b">Copiar</button></div>
+      <pre id="ij-b">Hola:
+
+Me interesa el puesto de [PUESTO]. Soy desarrollador con experiencia en React y JavaScript (Create Ape: React, Vite, Chakra UI, Material UI, Firebase) y con base sólida de QA, lo que significa que entrego código probado y no solo código que compila.
+
+También he trabajado en consultoría sobre Dynamics 365 y Power Platform, así que estoy acostumbrado a entornos de cliente, plazos y equipos multidisciplinares.
+
+Vivo en Valencia, tengo disponibilidad inmediata y estoy abierto a teletrabajo total.
+
+Adjunto CV. Gracias por el tiempo.
+
+Joaquín Montenegro
+601 580 269 · joaquinmontenegro2612@gmail.com</pre>
+    </div>
+    <div class="copy">
+      <div class="hd"><span class="lbl">C · Oferta de QA / Tester (la puerta más rápida al remoto)</span><button class="cp" data-copy="ij-c">Copiar</button></div>
+      <pre id="ij-c">Hola:
+
+Me interesa el puesto de [PUESTO]. Tengo experiencia real como QA Engineer: pruebas funcionales, de backend y móviles (iOS/Android), diseño y ejecución de casos de prueba en Jira y TestLodge, depuración y despliegue de entornos con Azure DevOps, Bitbucket y Git.
+
+Vengo del desarrollo (React, JavaScript), así que puedo leer el código, reproducir el bug con precisión y hablar de igual a igual con el equipo técnico en lugar de solo reportar "no funciona".
+
+También tengo experiencia trabajando bajo presión y con plazos cerrados en hostelería y reformas: no me bloqueo cuando aparece un imprevisto.
+
+Disponibilidad inmediata, permiso B, abierto a teletrabajo.
+
+Joaquín Montenegro
+601 580 269 · joaquinmontenegro2612@gmail.com</pre>
+    </div>
+
+    <div class="note danger">
+      <b>Borra esto de tu perfil hoy:</b> las "certificaciones" con palabras sueltas (ceramicas, pintura, pladur,
+      reformas pared), la primera línea "perfil polivalente", las categorías de hostelería si aplicas a tecnología,
+      la foto de obra o de barra, y las fechas solapadas sin explicación.
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOBTODAY ============ -->
+<section id="jobtoday">
+  <div class="wrap">
+    <h2><span class="num">05</span>JobToday</h2>
+    <div class="note danger">
+      <b>La verdad incómoda:</b> JobToday es hostelería, retail, logística y obra. Ahí <b>no vas a encontrar un
+      trabajo en remoto con el ordenador</b>. Sirve para otra cosa: <b>caja rápida esta semana</b>. Y eso hoy lo
+      necesitas. Úsala para que entre dinero en 7-14 días mientras LinkedIn e InfoJobs traen el trabajo de verdad.
+    </div>
+
+    <h3>"Sobre mí" — versión hostelería</h3>
+    <div class="copy">
+      <div class="hd"><span class="lbl">Hostelería · barra, sala, eventos</span><button class="cp" data-copy="jt-host">Copiar</button></div>
+      <pre id="jt-host">Camarero, bartender y encargado con más de 5 años de experiencia en bares, restaurantes, discotecas, eventos y servicio de alta gama (Hotel Arts Barcelona). También he fundado y gestionado mi propia cafetería, así que sé llevar barra, caja, cierres, stock y equipo, no solo servir.
+
+Experiencia en coctelería clásica y de autor, servicio en sala, atención al cliente nacional e internacional, montaje de eventos y trabajo a presión en horas punta. Certificado de manipulación de alimentos y operaciones básicas de cocina.
+
+Disponibilidad inmediata, también noches y fines de semana. Permiso B. Vivo en Patraix (Valencia), bien conectado en transporte y puedo desplazarme a toda la ciudad.</pre>
+    </div>
+
+    <h3>"Sobre mí" — versión almacén / obra</h3>
+    <div class="copy">
+      <div class="hd"><span class="lbl">Almacén, logística y obra</span><button class="cp" data-copy="jt-obra">Copiar</button></div>
+      <pre id="jt-obra">Trabajador polivalente con experiencia en almacén, obra y reformas. He participado en más de 30 obras en España: albañilería, pladur, yeso, pintura, alicatado, techos, cubiertas e impermeabilización, además de carga, descarga y organización de materiales.
+
+También he sido responsable de mi propio negocio, así que cumplo horarios, cuido el material y no necesito que me estén empujando. Persona puntual, ordenada y acostumbrada a trabajar de pie todo el día.
+
+Disponibilidad inmediata, mañana y tarde, fines de semana y turnos de noche. Permiso B y vehículo propio para desplazarme.</pre>
+    </div>
+    <p class="small"><b>No pongas las dos a la vez.</b> Elige según el tipo de oferta a la que apliques ese día. JobToday te deja editar rápido.</p>
+
+    <h3>Arreglar "Certificaciones"</h3>
+    <p class="small">Hoy tienes <span class="tiny">carnet · ceramicas · manipulación de alimentos · operaciones básicas de cocina · pintura · curso de hostelería · pladur · reformas pared</span>. Eso parece una nube de etiquetas. Sustitúyelo por:</p>
+    <div class="copy">
+      <div class="hd"><span class="lbl">Certificaciones</span><button class="cp" data-copy="jt-cert">Copiar</button></div>
+      <pre id="jt-cert">Carnet de conducir B
+Certificado de Manipulación de Alimentos (2024)
+Operaciones básicas de cocina
+Curso de hostelería / coctelería
+Formación en pladur y montaje (reformas)
+Formación en pintura y acabados
+Formación en alicatado y cerámica
+Máster en Desarrollo Web — AIP Barcelona (2021-2022)</pre>
+    </div>
+    <p class="small">Si alguna no tiene título oficial, ponla en <b>"Conocimientos"</b>, no en certificaciones. La credibilidad se gana con precisión, no con volumen.</p>
+
+    <h3>Guion del vídeo de presentación (45-60 s)</h3>
+    <p class="small">Ya tienes vídeo y casi nadie lo tiene: es lo que te diferencia. Grábalo <b>en horizontal, con luz de ventana de frente, sin música y sin cortinillas</b>. Fondo de pared lisa. Que se te oiga bien.</p>
+    <div class="copy">
+      <div class="hd"><span class="lbl">Guion</span><button class="cp" data-copy="jt-video">Copiar</button></div>
+      <pre id="jt-video">[0-5 s · a cámara, sonriendo]
+"Hola, soy Joaquín Montenegro y vivo en Patraix, Valencia."
+
+[5-15 s · rápido y claro]
+"Trabajo en hostelería desde hace más de cinco años: barra, sala, coctelería y encargado.
+He trabajado en el Hotel Arts de Barcelona y he tenido mi propia cafetería,
+así que sé lo que es un servicio, un cierre y un cliente con prisa."
+
+[15-30 s · lo que el empleador quiere oír]
+"Me caracterizo por una cosa: aparezco. Puntual, con el uniforme listo y con ganas.
+Si me toca doblar turno en un evento, lo hago. Si hay que limpiar, limpio."
+
+[30-45 s · disponibilidad]
+"Tengo disponibilidad inmediata, también noches y fines de semana.
+Manipulación de alimentos en vigor y permiso de conducir.
+Estoy a diez minutos del centro y me muevo en bici o en metro."
+
+[45-55 s · cierre]
+"Si buscas a alguien que no te dé problemas y que aprenda rápido,
+escríbeme por aquí. Gracias."</pre>
+    </div>
+
+    <h3>Cómo cobrar rápido (esta semana)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Paso</th><th>Qué hacer</th></tr></thead>
+        <tbody>
+          <tr><td><b>1</b></td><td>Activa alertas de: camarero/a, bartender, camarero de eventos, montaje de eventos, peón, mozo de almacén, azafato/a — en València</td></tr>
+          <tr><td><b>2</b></td><td>Aplica en la <b>primera hora</b>. Estas ofertas reciben 50-200 candidaturas el primer día</td></tr>
+          <tr><td><b>3</b></td><td>Manda siempre mensaje, no solo el botón (usar el texto de abajo)</td></tr>
+          <tr><td><b>4</b></td><td><b>Estafas:</b> si piden dinero, "formación previa de pago" o citan sin nombre de empresa, fuera. Nunca datos bancarios ni fotos del DNI antes de una entrevista formal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="copy">
+      <div class="hd"><span class="lbl">Mensaje a la oferta</span><button class="cp" data-copy="jt-msg">Copiar</button></div>
+      <pre id="jt-msg">Hola [Nombre], me interesa el puesto de [PUESTO]. Tengo experiencia en barra y sala, he sido encargado de mi propio local y tengo disponibilidad inmediata, también noches y fines de semana. Estoy en Patraix y puedo empezar hoy mismo. ¿Te llamo o me llamas?</pre>
+    </div>
+    <p class="small"><b>Tarifas reales de referencia en València:</b> 15-25 €/h en eventos · 8-11 €/h en barra · 90-130 €/día en obra. Con 3-4 eventos al mes ya cubres la cuota de autónomos y la comida mientras construyes lo otro.</p>
+  </div>
+</section>
+
+<!-- ============ CV ============ -->
+<section id="cv">
+  <div class="wrap">
+    <h2><span class="num">06</span>Tu CV nuevo</h2>
+    <p class="sub">Uno solo, de una página, una columna, sin tablas ni cajas: así lo leen bien los ATS (los filtros automáticos que descartan el 60 % de los CVs antes de que los vea un humano). Tu CV anterior de dos columnas salía desordenado al extraer el texto — eso es lo que ve un ATS.</p>
+
+    <div class="grid g2">
+      <div class="card">
+        <span class="tag t-amb">Versión editable</span>
+        <h4 style="font-size:17px">CV-Joaquin-Montenegro-Remoto.docx</h4>
+        <p class="small">Para modificar textos, añadir un puesto nuevo o adaptar a una oferta concreta. Es el que subes a InfoJobs.</p>
+        <div class="btnrow"><a class="btn" href="cv/CV-Joaquin-Montenegro-Remoto.docx" download>Descargar .docx</a></div>
+      </div>
+      <div class="card">
+        <span class="tag t-grn">Versión para enviar</span>
+        <h4 style="font-size:17px">CV-Joaquin-Montenegro-Remoto.pdf</h4>
+        <p class="small">La que adjuntas en emails y portales. Se ve igual en cualquier ordenador. Una página.</p>
+        <div class="btnrow"><a class="btn" href="cv/CV-Joaquin-Montenegro-Remoto.pdf" target="_blank">Abrir .pdf</a></div>
+      </div>
+    </div>
+
+    <h3>Antes de enviarlo, cambia estas dos cosas</h3>
+    <ul class="clean">
+      <li><b>github.com/tu-usuario</b> → tu URL real de GitHub (créala hoy, aunque esté casi vacía).</li>
+      <li><b>linkedin.com/in/joaquin-montenegro</b> → confirma que esa URL está libre y es la tuya.</li>
+      <li><b>La sección "Proyectos"</b> habla de PresupuestoPro. Si aún no lo has construido, tarda 8-10 h en hacerlo (spec en la sección Oferta) o quítala hasta tenerlo. <b>No mientas nunca en un CV: se cae en la primera pregunta.</b></li>
+    </ul>
+
+    <div class="note good">
+      <b>Por qué este CV funciona y el tuyo no:</b> abre con la especialidad (Power Platform / Dynamics 365), pone
+      las tres etapas técnicas primero, convierte la cafetería y las obras en <b>argumento de negocio</b> en vez de
+      relleno, y cierra con una línea explícita de trabajo remoto. Todo en una página.
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFERTA ============ -->
+<section id="oferta">
+  <div class="wrap">
+    <h2><span class="num">07</span>Tu oferta: algo que la gente quiera pagarte</h2>
+    <p class="sub">Esto es la parte que pediste: un servicio concreto, con precio, con cliente identificable y con una razón por la que te tienen que elegir a ti.</p>
+
+    <h3>Cliente ideal (los primeros 90 días)</h3>
+    <div class="grid g3">
+      <div class="card">
+        <span class="tag t-amb">Perfil A · el más rentable</span>
+        <h4>Gremios y oficios</h4>
+        <p class="small" style="margin:0">Fontaneros, electricistas, pintores, instaladores de aire, cerrajeros, reformas. 1-8 trabajadores. Presupuestos en Word y WhatsApp. No salen en Google.</p>
+      </div>
+      <div class="card">
+        <span class="tag t-grn">Perfil B · tu ventaja</span>
+        <h4>Hostelería y comercio de barrio</h4>
+        <p class="small" style="margin:0">Bares, cafeterías, panaderías, peluquerías, clínicas pequeñas, gimnasios. Tú vienes de ahí: hablas su idioma sin traducir.</p>
+      </div>
+      <div class="card">
+        <span class="tag t-blu">Perfil C · tarifa alta</span>
+        <h4>Pymes con Excel y WhatsApp</h4>
+        <p class="small" style="margin:0">Asesorías, gestorías, distribuidoras, talleres. Aquí vendes Power Automate y Power Apps, que es tu tarifa alta.</p>
+      </div>
+    </div>
+
+    <h3>Los tres servicios, con precios</h3>
+    <div class="grid g3">
+      <div class="price">
+        <div class="pf">Puerta de entrada</div>
+        <h4>Pack Presencia</h4>
+        <div class="amount">590 €</div>
+        <div class="tiny">pago único · coste real ~70 €/año</div>
+        <ul>
+          <li>Landing de 1 página (móvil primero)</li>
+          <li>Ficha de Google Business optimizada</li>
+          <li>WhatsApp Business configurado</li>
+          <li>Dominio + hosting + SSL 1 año</li>
+          <li>Textos y fotos básicas</li>
+        </ul>
+        <div class="recur">+ mantenimiento 49 €/mes</div>
+      </div>
+
+      <div class="price star">
+        <div class="pf">★ Tu producto estrella</div>
+        <h4>Pack Presupuestos</h4>
+        <div class="amount">890 €</div>
+        <div class="tiny">pago único · 16-25 h de trabajo</div>
+        <ul>
+          <li>Presupuesto desde el móvil en 1 min</li>
+          <li>PDF automático con logo, partidas e IVA</li>
+          <li>Envío al cliente + copia al dueño</li>
+          <li>Registro y aviso de seguimiento a los 3 días</li>
+          <li>Formación de 1 hora incluida</li>
+        </ul>
+        <div class="recur">+ soporte y ajustes 79 €/mes</div>
+      </div>
+
+      <div class="price">
+        <div class="pf">Tarifa alta</div>
+        <h4>Automatización a medida</h4>
+        <div class="amount">45-60 €<small>/h</small></div>
+        <div class="tiny">o 320-420 €/día · proyecto desde 1.200 €</div>
+        <ul>
+          <li>Aprobaciones y avisos automáticos</li>
+          <li>Integración de Excel, CRM y correo</li>
+          <li>Apps internas con Power Apps</li>
+          <li>Informes automáticos</li>
+          <li>Bolsa de 20 h prepago: 900 €</li>
+        </ul>
+        <div class="recur">extras: auditoría 150 € · curso 180 €</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>Regla de precios:</b> tus dos primeros clientes a <b>400 €</b> "precio caso de estudio" (solo para los dos
+      primeros) a cambio de una reseña y un vídeo de 20 segundos. Del tercero en adelante, tarifa completa.
+      <b>Nunca bajes</b>: si te dicen que es caro, responde <i>"¿cuánto te cuesta un presupuesto perdido?"</i>.
+      Y siempre <b>50 % por adelantado</b>: el que no paga el 50 % no paga nunca.
+    </div>
+
+    <h3>Las cuentas de "cuanto más hago, más cobro"</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Momento</th><th>Webs</th><th>Presupuestos</th><th>Mantenimientos</th><th>Facturación/mes</th></tr></thead>
+        <tbody>
+          <tr><td><b>Mes 2</b></td><td>1</td><td>0</td><td>0</td><td>400 €</td></tr>
+          <tr><td><b>Mes 4</b></td><td>2</td><td>1</td><td>3</td><td>~1.100 €</td></tr>
+          <tr><td><b>Mes 8</b></td><td>3</td><td>3</td><td>6</td><td>~2.000 €</td></tr>
+          <tr><td><b>Mes 12</b></td><td>4</td><td>5</td><td>10</td><td>~3.300 €</td></tr>
+          <tr class="goal"><td><b>Mes 18</b></td><td>5</td><td>8</td><td>15</td><td class="hi">~5.000 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top:12px"><b>Ojo con la trampa:</b> esto no llega solo. Cada cliente son ~10 mensajes en frío y 2 llamadas. Si mandas 20 mensajes a la semana, cierras 1-2 al mes. Si mandas 5, no cierras nada. <b>El negocio es el mensaje, no la web.</b></p>
+
+    <h3>Tu portfolio: constrúyelo en un fin de semana (todo gratis)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Pieza</th><th>Tiempo</th><th>Qué</th></tr></thead>
+        <tbody>
+          <tr><td><b>PresupuestoPro</b></td><td>8-10 h</td><td>App donde metes 3 partidas, pones el logo y genera un PDF con IVA que se envía solo. Power Apps + Power Automate. <b>Es portfolio y es el producto que vendes: se cierra solo en las reuniones.</b></td></tr>
+          <tr><td><b>Landing</b></td><td>4 h</td><td>1 página: quién eres, 3 servicios, precios (con precios), 2 casos, formulario. Gratis en Vercel</td></tr>
+          <tr><td><b>GitHub</b></td><td>2 h</td><td>Foto, bio, README con 3 líneas, 2 repos buenos con captura. Mejor 2 buenos que 15 vacíos</td></tr>
+          <tr><td><b>3 casos</b></td><td>1 h</td><td>Medialuna (negocio), Experiencity (sector), Tigloo/Create Ape (técnica)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Los mensajes para conseguir el primer cliente</h3>
+    <div class="copy">
+      <div class="hd"><span class="lbl">A · Tus antiguos clientes de reformas (tienes 30)</span><button class="cp" data-copy="msg-a">Copiar</button></div>
+      <pre id="msg-a">Hola [Nombre], soy Joaquín, el que te hizo [la reforma del baño / la pintura]. Te escribo porque he vuelto a la informática y estoy haciendo webs y automatizaciones para gente del sector.
+
+Te hago una pregunta rápida: ¿cómo estás haciendo los presupuestos ahora? Lo digo porque he montado algo que hace el presupuesto desde el móvil en 1 minuto y lo manda al cliente con tu logo. Si quieres te lo enseño en 10 minutos y decides. Sin compromiso.</pre>
+    </div>
+    <div class="copy">
+      <div class="hd"><span class="lbl">B · Gremios del barrio, en persona</span><button class="cp" data-copy="msg-b">Copiar</button></div>
+      <pre id="msg-b">Buenos días, ¿está el dueño? Soy Joaquín, vivo aquí al lado. Estoy montando webs y sistemas de presupuestos para instaladores y reformas. No te vengo a vender nada hoy: te dejo esto [tarjeta/QR] y si algún día pierdes un presupuesto por no contestar a tiempo, me llamas.</pre>
+    </div>
+    <div class="copy">
+      <div class="hd"><span class="lbl">C · LinkedIn a pymes (10 al día)</span><button class="cp" data-copy="msg-c">Copiar</button></div>
+      <pre id="msg-c">Hola [Nombre], he visto que [empresa] hace [instalaciones/reformas]. Una pregunta sin rodeos: ¿los presupuestos los seguís haciendo a mano? Lo pregunto porque ayudo a empresas como la tuya a que el presupuesto salga del móvil en un minuto y con seguimiento automático. Si te interesa, te enseño una demo de 2 minutos. Si no, sin problema.</pre>
+    </div>
+    <div class="copy">
+      <div class="hd"><span class="lbl">D · Grupos de gremios de València (Facebook / WhatsApp)</span><button class="cp" data-copy="msg-d">Copiar</button></div>
+      <pre id="msg-d">Hola a todos. Soy Joaquín, de Patraix. Soy consultor (Power Platform/React) y antes he estado 30 obras en reformas, así que conozco el perro. Si a alguien le interesa digitalizar presupuestos o tener una web decente, escribo por privado y le enseño sin compromiso. Dejo una demo: [enlace]. (No molesto más, perdón por el spam.)</pre>
+    </div>
+
+    <h3>Dónde vender</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Plataforma</th><th>Para qué</th><th>Comisión</th></tr></thead>
+        <tbody>
+          <tr><td><b>Boca a boca del barrio</b></td><td><b>El mejor de todos.</b> Empieza aquí</td><td>0 %</td></tr>
+          <tr><td><b>Malt</b> (malt.es)</td><td>Freelance tech en España, tarifas altas. La mejor para tu perfil técnico</td><td>~10 %</td></tr>
+          <tr><td><b>LinkedIn Servicios</b></td><td>Clientes directos, sin comisión. Actívalo en tu perfil</td><td>0 %</td></tr>
+          <tr><td><b>Workana</b></td><td>LATAM + España, proyectos pequeños. Buenos para los primeros</td><td>10-20 %</td></tr>
+          <tr><td><b>Upwork</b></td><td>Clientes internacionales, pago en USD</td><td>10 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Cómo escalar más allá de tus horas</h3>
+    <ul class="clean">
+      <li><b>Subir precio.</b> Con 5 casos y 5 reseñas pasas de 590 € a 890 € por la misma web. Duplicas ingreso sin trabajar más.</li>
+      <li><b>Recurrencia.</b> 15 clientes × 60 €/mes = 900 €/mes que llegan solos. Aquí está la tranquilidad.</li>
+      <li><b>Productizar.</b> Empaquetar el Pack Presupuestos y venderlo a 30 gremios con plantilla. Ahí ya necesitas colaborador a comisión y te quedas el margen.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ DINERO ============ -->
+<section id="dinero">
+  <div class="wrap">
+    <h2><span class="num">08</span>Las cuentas de verdad</h2>
+    <p class="sub">Qué significa 3.500 €, los cinco escenarios hasta llegar y —lo primero— cómo conseguir dinero esta misma semana sin gastar un euro.</p>
+
+    <h3>Primero: ¿qué son 3.500 €?</h3>
+    <div class="grid g2">
+      <div class="card">
+        <span class="tag t-blu">Con nómina</span>
+        <div class="tbl-wrap" style="border:0">
+          <table style="min-width:0">
+            <thead><tr><th>Neto/mes</th><th>Bruto anual</th><th>Perfil</th></tr></thead>
+            <tbody>
+              <tr><td>1.400 €</td><td>20.000 €</td><td>Junior / soporte / QA junior</td></tr>
+              <tr><td>1.800 €</td><td>26.000 €</td><td>Mid junior</td></tr>
+              <tr><td>2.300 €</td><td>33.000 €</td><td>Mid</td></tr>
+              <tr><td>2.800 €</td><td>40.000 €</td><td>Mid-senior</td></tr>
+              <tr class="goal"><td><b>3.500 €</b></td><td><b>55.000-60.000 €</b></td><td><b>Senior / 4-6 años</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <span class="tag t-amb">Como autónomo</span>
+        <p class="small" style="font-family:ui-monospace,monospace;background:#0d1418;padding:14px;border-radius:9px;border:1px solid var(--line);line-height:1.9">
+          Facturación = (3.500 netos + cuota + gastos) / 0,85<br>
+          = (3.500 + 80-250 + ~150) / 0,85<br>
+          <b style="color:var(--amber)">≈ 4.400 – 4.600 €/mes facturados</b>
+        </p>
+        <p class="small" style="margin:0">Unos 54.000 €/año. A 45 €/h son <b>~100 horas al mes</b>: 5 horas facturables al día, 20 días. Viable, pero con 2-3 clientes a la vez.</p>
+      </div>
+    </div>
+    <div class="note"><b>Verifica siempre las cifras fiscales del año en curso</b> (cuota de autónomos, tipos de IRPF) con un gestor. La primera consulta suele ser gratis en cualquier asesoría de barrio y te puede ahorrar cientos de euros.</div>
+
+    <h3>Los cinco escenarios hasta los 3.500</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Fase</th><th>Cuándo</th><th>Qué estás haciendo</th><th>Neto/mes</th></tr></thead>
+        <tbody>
+          <tr><td><b>0 · Suelo</b></td><td>Semana 1-2</td><td>Paro o subsidio + tramitarlo bien + 1-2 días de evento o reforma</td><td>600 – 1.200 €</td></tr>
+          <tr><td><b>1 · Aire</b></td><td>Mes 1-2</td><td>Eventos/obra 2-3 días/semana + primeros trabajos freelance pequeños</td><td>1.100 – 1.800 €</td></tr>
+          <tr><td><b>2 · Base</b></td><td>Mes 2-5</td><td>Nómina remota (QA, soporte, maquetación, junior Power Platform 20-26k) + 1 mantenimiento</td><td>1.600 – 2.200 €</td></tr>
+          <tr><td><b>3 · Subida</b></td><td>Mes 5-10</td><td>Cambio o ascenso a consultor Power Platform / dev React (30-38k) + 2-3 clientes</td><td>2.400 – 3.000 €</td></tr>
+          <tr class="goal"><td><b>4 · Objetivo</b></td><td>Mes 10-18</td><td>Consultor mid-senior (42-50k) <b>o</b> freelance con 3-4 clientes + 2 proyectos/trimestre</td><td class="hi"><b>3.300 – 3.800 €</b></td></tr>
+          <tr><td><b>5 · Techo</b></td><td>Mes 18+</td><td>Senior/lead o freelance a 55-70 €/h</td><td>4.000 – 5.500 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Por qué Power Platform y no "programar en general"</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Camino</th><th>Dificultad</th><th>Sueldo remoto ES</th><th>Tu ventaja</th></tr></thead>
+        <tbody>
+          <tr><td>Desarrollo web genérico (React)</td><td>Alta</td><td>24-40k</td><td>Media</td></tr>
+          <tr><td>QA / testing manual</td><td><b>Baja</b></td><td>20-30k</td><td><b>Alta</b> (ya fuiste QA)</td></tr>
+          <tr><td>Soporte técnico remoto</td><td><b>Muy baja</b></td><td>18-24k</td><td>Media</td></tr>
+          <tr class="goal"><td><b>Power Platform / Dynamics 365</b></td><td>Media</td><td><b>30-50k</b></td><td class="hi"><b>Muy alta: falta gente</b></td></tr>
+          <tr><td>Freelance web para gremios</td><td>Media</td><td>Variable</td><td class="hi">Muy alta (vienes del sector)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top:12px">Dynamics 365 y Power Platform son un nicho con <b>menos candidatos que ofertas</b> en España. Es tecnología de empresa, no de moda: paga bien, se trabaja mucho en remoto y tú ya tienes dos etapas reales ahí. Es tu mejor activo y probablemente no lo estabas usando.</p>
+
+    <h3>Dinero esta semana, sin gastar nada</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Trámite</th><th>Dónde</th><th>Por qué importa</th></tr></thead>
+        <tbody>
+          <tr><td><b>Informe de vida laboral</b></td><td>sede.seg-social.gob.es</td><td>Con 360 días cotizados en 6 años ya generas paro; con 3 meses, la ayuda posterior</td></tr>
+          <tr><td><b>Cita previa SEPE</b></td><td>sepe.es</td><td><b>Tienes 15 días hábiles desde el fin de contrato.</b> Si te duermes, pierdes días de cobro</td></tr>
+          <tr><td><b>Subsidio por insuficiencia de cotización</b></td><td>SEPE</td><td>Si no llegas a 360 días: ~80 % del IPREM durante 6-21 meses, y sigue cotizando</td></tr>
+          <tr><td><b>Renta Valenciana de Inclusión</b></td><td>Servicios Sociales de Patraix</td><td>Renta de la Generalitat para ingresos bajos. Requisitos y cuantía varían según el caso</td></tr>
+          <tr><td><b>Ayudas de emergencia municipal</b></td><td>Servicios Sociales del barrio</td><td>Alimentación y suministros. No es caridad: es un derecho que has pagado con impuestos</td></tr>
+          <tr><td><b>Capitalización del paro (pago único)</b></td><td>SEPE</td><td>Si te das de alta como autónomo, puedes cobrar de golpe lo que te quede. Pregúntalo <b>antes</b> de darte de alta</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Caja rápida por trabajo (sin esperar a nadie)</h3>
+    <div class="grid g3">
+      <div class="card"><h4>Eventos y hostelería</h4><p class="small" style="margin:0">Ferias, bodas, congresos, conciertos, campañas. <b>12-20 €/h</b></p></div>
+      <div class="card"><h4>Reforma y pintura</h4><p class="small" style="margin:0">Particulares. <b>90-140 €/día</b>. Avisa a tus clientes anteriores de que vuelves a estar disponible</p></div>
+      <div class="card"><h4>Mudanzas y muebles</h4><p class="small" style="margin:0">Milanuncios / Wallapop. Sale el mismo día. <b>15-25 €/h</b></p></div>
+    </div>
+    <div class="note danger"><b>No te des de alta como autónomo hasta tener un cliente que pague.</b> Y en el momento del alta, pide la <b>tarifa plana</b> (~80 €/mes el primer año).</div>
+  </div>
+</section>
+
+<!-- ============ PLAN 30 ============ -->
+<section id="plan30">
+  <div class="wrap">
+    <h2><span class="num">09</span>Plan de 30 días</h2>
+    <p class="sub">Marca las casillas: se guardan en este navegador. Cada día, una tarea de cada canal. No empieces el día sin haber mandado 3 mensajes que puedan convertirse en dinero.</p>
+
+    <div class="tbl-wrap" style="margin-bottom:26px">
+      <table>
+        <thead><tr><th>Bloque</th><th>Tiempo</th><th>Qué</th></tr></thead>
+        <tbody>
+          <tr><td><b>A · Caja</b></td><td>2-4 h</td><td>Lo que pague ya: evento, obra, mudanza, clases</td></tr>
+          <tr><td><b>B · Candidaturas</b></td><td>1,5 h</td><td>5 candidaturas cualificadas + 10 mensajes a reclutadores</td></tr>
+          <tr><td><b>C · Clientes freelance</b></td><td>1 h</td><td>10 mensajes en frío + seguimiento de los de ayer</td></tr>
+          <tr><td><b>D · Portfolio</b></td><td>1-2 h</td><td>Construir la demo, Microsoft Learn, publicar</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="progress" id="progbar">
+      <div class="wrap">
+        <div class="bar"><i id="barfill"></i></div>
+        <div class="n" id="progtext">0 / 0</div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="wk-hd"><span class="t">Semana 1 · Dinero y cimientos</span><span class="d">días 1-7</span></div>
+
+      <div class="daylbl">Día 1 · Administración (todo gratis, todo por la web)</div>
+      <label class="chk"><input type="checkbox" data-k="w1d1a"><span>Pedir cita previa en el SEPE para la prestación (15 días hábiles desde el fin de contrato)</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d1b"><span>Descargar el informe de vida laboral en la Sede Electrónica de la Seguridad Social</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d1c"><span>Pedir cita en Servicios Sociales de Patraix (RVI y ayudas de emergencia)</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d1d"><span>3 ofertas de evento/hostelería + 3 de obra en JobToday y Milanuncios, con mensaje</span></label>
+
+      <div class="daylbl">Día 2 · LinkedIn (2 h)</div>
+      <label class="chk"><input type="checkbox" data-k="w1d2a"><span>Pegar titular y extracto nuevos</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d2b"><span>Reescribir las 3 experiencias técnicas + Medialuna y Experiencity</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d2c"><span>Ordenar aptitudes (Power Platform, Power Automate, Dynamics 365 arriba)</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d2d"><span>URL limpia + foto + portada + "Abierto a trabajar → En remoto"</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d2e"><span>Activar las 5 alertas de empleo con filtro En remoto</span></label>
+
+      <div class="daylbl">Día 3 · InfoJobs + JobToday (2 h)</div>
+      <label class="chk"><input type="checkbox" data-k="w1d3a"><span>Subir el CV nuevo a InfoJobs con el puesto y la presentación nuevos</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d3b"><span>Crear las 7 búsquedas guardadas con alerta diaria</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d3c"><span>JobToday: nuevo "Sobre mí" + arreglar certificaciones</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d3d"><span>Grabar el vídeo de presentación con el guion</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d3e"><span>Aplicar a 10 ofertas (JobToday + InfoJobs)</span></label>
+
+      <div class="daylbl">Día 4 · Tus primeros 20 mensajes (1 h)</div>
+      <label class="chk"><input type="checkbox" data-k="w1d4a"><span>Lista de tus antiguos clientes de reformas (mínimo 10, del móvil y de la memoria)</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d4b"><span>Enviar el mensaje A a los 10</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d4c"><span>Paseo de 40 min por Patraix apuntando 20 negocios sin web decente</span></label>
+
+      <div class="daylbl">Día 5 · GitHub + portfolio mínimo (3 h)</div>
+      <label class="chk"><input type="checkbox" data-k="w1d5a"><span>Cuenta de GitHub con foto y bio</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d5b"><span>Repo "presupuesto-pro" con la primera versión (aunque funcione a medias)</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d5c"><span>Repo "landing" con tus servicios</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d5d"><span>Pegar las URLs en LinkedIn, InfoJobs y el CV</span></label>
+
+      <div class="daylbl">Día 6 · Microsoft Learn (2 h) + candidaturas</div>
+      <label class="chk"><input type="checkbox" data-k="w1d6a"><span>Empezar la ruta PL-900 Power Platform Fundamentals en learn.microsoft.com (gratis, ~6 h)</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d6b"><span>5 candidaturas + 10 invitaciones a reclutadores</span></label>
+
+      <div class="daylbl">Día 7 · Revisión</div>
+      <label class="chk"><input type="checkbox" data-k="w1d7a"><span>Contar candidaturas, respuestas, mensajes y llamadas</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d7b"><span>Ajustar lo que no funcione (0 respuestas en 25 candidaturas = CV o titular mal)</span></label>
+      <p class="goal-line"><b>Objetivo semana 1:</b> SEPE tramitado · 3 perfiles arreglados · 20 candidaturas · 10 mensajes a clientes antiguos · 1 repo público</p>
+    </div>
+
+    <div class="week">
+      <div class="wk-hd"><span class="t">Semana 2 · La demo que vende</span><span class="d">días 8-14</span></div>
+      <div class="daylbl">Días 8-10 · Construir PresupuestoPro</div>
+      <label class="chk"><input type="checkbox" data-k="w2d8a"><span>Formulario: cliente, concepto, cantidad, precio, IVA</span></label>
+      <label class="chk"><input type="checkbox" data-k="w2d8b"><span>Generar PDF con logo y total</span></label>
+      <label class="chk"><input type="checkbox" data-k="w2d8c"><span>Envío automático por email</span></label>
+      <label class="chk"><input type="checkbox" data-k="w2d8d"><span>Vídeo de 60 s usándolo en el móvil + publicarlo en LinkedIn</span></label>
+      <div class="daylbl">Día 11 · Terminar PL-900</div>
+      <label class="chk"><input type="checkbox" data-k="w2d11a"><span>Completar la ruta de aprendizaje y añadir "PL-900 en curso" al CV y LinkedIn</span></label>
+      <div class="daylbl">Día 12 · Visitas a pie de calle</div>
+      <label class="chk"><input type="checkbox" data-k="w2d12a"><span>Visitar 15 negocios con el móvil y la demo. Objetivo: 3 conversaciones con el dueño</span></label>
+      <label class="chk"><input type="checkbox" data-k="w2d12b"><span>Apuntar nombre, negocio, dolor y teléfono de cada uno</span></label>
+      <div class="daylbl">Día 13 · 10 mensajes en frío por LinkedIn</div>
+      <label class="chk"><input type="checkbox" data-k="w2d13a"><span>Mensaje C a pymes y gremios de València</span></label>
+      <div class="daylbl">Día 14 · Revisión</div>
+      <label class="chk"><input type="checkbox" data-k="w2d14a"><span>Si nadie contesta: cambiar el primer renglón del mensaje</span></label>
+      <label class="chk"><input type="checkbox" data-k="w2d14b"><span>5 candidaturas más + seguimiento a los clientes antiguos que no contestaron</span></label>
+      <p class="goal-line"><b>Objetivo semana 2:</b> demo funcionando · vídeo publicado · 15 visitas · 15 mensajes nuevos · 10 candidaturas</p>
+    </div>
+
+    <div class="week">
+      <div class="wk-hd"><span class="t">Semana 3 · Cerrar el primer euro</span><span class="d">días 15-21</span></div>
+      <div class="daylbl">Días 15-16 · Primera propuesta</div>
+      <label class="chk"><input type="checkbox" data-k="w3d15a"><span>Propuesta de 1 página con precio cerrado y fecha de entrega</span></label>
+      <label class="chk"><input type="checkbox" data-k="w3d15b"><span>Ofrecer "precio caso de estudio" a los 2 primeros</span></label>
+      <label class="chk"><input type="checkbox" data-k="w3d15c"><span>Pedir 50 % por adelantado. Sin excepciones</span></label>
+      <div class="daylbl">Día 17 · Alta de autónomo (solo si hay cliente)</div>
+      <label class="chk"><input type="checkbox" data-k="w3d17a"><span>Alta en Hacienda (037) y en Seguridad Social, pidiendo tarifa plana</span></label>
+      <label class="chk"><input type="checkbox" data-k="w3d17b"><span>Cuenta bancaria separada + primera consulta con gestor</span></label>
+      <div class="daylbl">Día 18 · Plataformas freelance</div>
+      <label class="chk"><input type="checkbox" data-k="w3d18a"><span>Perfil en Malt con titular, 3 casos y tarifa 45 €/h</span></label>
+      <label class="chk"><input type="checkbox" data-k="w3d18b"><span>Perfil en Workana + activar "servicios" en LinkedIn</span></label>
+      <div class="daylbl">Día 19 · Contenido que atrae</div>
+      <label class="chk"><input type="checkbox" data-k="w3d19a"><span>Post largo en LinkedIn: lo que aprendiste sobre cómo pierden dinero los gremios</span></label>
+      <label class="chk"><input type="checkbox" data-k="w3d19b"><span>Publicar la demo en grupos de gremios de València</span></label>
+      <div class="daylbl">Días 20-21 · Revisión</div>
+      <label class="chk"><input type="checkbox" data-k="w3d20a"><span>Medir el embudo: contactos → conversaciones → propuestas → cierres</span></label>
+      <p class="goal-line"><b>Objetivo semana 3:</b> 1 propuesta enviada · autónomo dado de alta · perfiles freelance creados · 10 candidaturas</p>
+    </div>
+
+    <div class="week">
+      <div class="wk-hd"><span class="t">Semana 4 · Consolidar y subir el precio</span><span class="d">días 22-30</span></div>
+      <div class="daylbl">Días 22-24 · Entregar impecable</div>
+      <label class="chk"><input type="checkbox" data-k="w4d22a"><span>Entregar antes de plazo</span></label>
+      <label class="chk"><input type="checkbox" data-k="w4d22b"><span>Pedir reseña en Google + vídeo de 20 s del cliente contento</span></label>
+      <label class="chk"><input type="checkbox" data-k="w4d22c"><span>Pedir 2 referidos ("¿conoces a alguien del sector?") — esto es lo que más cierra</span></label>
+      <div class="daylbl">Día 25 · Caso de estudio</div>
+      <label class="chk"><input type="checkbox" data-k="w4d25a"><span>1 página: problema → qué hiciste → resultado, con capturas</span></label>
+      <div class="daylbl">Día 26 · 20 mensajes nuevos (ahora con prueba social)</div>
+      <label class="chk"><input type="checkbox" data-k="w4d26a"><span>Reutilizar el mensaje añadiendo "acabo de hacer esto para [negocio] de València"</span></label>
+      <div class="daylbl">Día 27-28 · Candidaturas buenas y estado</div>
+      <label class="chk"><input type="checkbox" data-k="w4d27a"><span>10 candidaturas solo donde cumplas el 80 % + mensaje al reclutador</span></label>
+      <label class="chk"><input type="checkbox" data-k="w4d28a"><span>Tabla de estado: cobrado, pendiente, pipeline, candidaturas vivas</span></label>
+      <div class="daylbl">Días 29-30 · Mes 2</div>
+      <label class="chk"><input type="checkbox" data-k="w4d29a"><span>Fijar objetivo (mes 1: 500-900 € · mes 2: 1.200-1.800 €)</span></label>
+      <label class="chk"><input type="checkbox" data-k="w4d29b"><span>Reservar 2 h fijas al día para candidaturas (no negociable)</span></label>
+      <label class="chk"><input type="checkbox" data-k="w4d29c"><span>Apuntarse a 1 evento o meetup tech de València</span></label>
+      <p class="goal-line"><b>Objetivo semana 4:</b> 1 trabajo entregado · 1 reseña · 2 propuestas · 20 mensajes nuevos</p>
+    </div>
+
+    <h3>KPIs: cómo saber si vas bien</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Métrica</th><th>Sem 1</th><th>Sem 2</th><th>Sem 3</th><th>Sem 4</th></tr></thead>
+        <tbody>
+          <tr><td>Candidaturas enviadas</td><td>20</td><td>15</td><td>15</td><td>20</td></tr>
+          <tr><td>Mensajes a clientes potenciales</td><td>20</td><td>25</td><td>20</td><td>30</td></tr>
+          <tr><td>Conversaciones reales</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+          <tr><td>Propuestas enviadas</td><td>0</td><td>0</td><td>1</td><td>2</td></tr>
+          <tr class="goal"><td><b>Euros cobrados</b></td><td>0-300</td><td>0-400</td><td>400-900</td><td>600-1.200</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Las 5 cosas que te van a sabotear</h3>
+    <ul class="clean">
+      <li><b>Esperar a estar "preparado".</b> No lo vas a estar nunca. La demo fea que enseñas hoy vale más que la perfecta de marzo.</li>
+      <li><b>Estudiar en vez de vender.</b> 6 h de curso al día sin mandar un mensaje son 0 €. Máximo 2 h/día de estudio.</li>
+      <li><b>Bajar el precio por miedo.</b> Si dudas, sube. Siempre es más fácil bajar que subir.</li>
+      <li><b>No pedir el dinero.</b> Cobra el 50 % antes. El que no paga el 50 % no paga nunca.</li>
+      <li><b>Dispersarte.</b> Un nicho (gremios de València), un producto (presupuestos), un mes. Luego amplías.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 8px"><b style="color:var(--ink)">Resumen en una frase:</b> esta semana cobras lo que puedas (eventos, obra, paro). Este mes consigues una nómina remota de 1.400-1.800 €. En 6 meses estás en 2.300. En 12-18 meses, en 3.500. Y en paralelo construyes un negocio de automatización para gremios que, si funciona, te da los 3.500 sin jefe antes que la nómina.</p>
+    <p class="tiny" style="margin:0">Documento de trabajo · Joaquín Montenegro · Patraix, València · noviembre 2026. Las cifras fiscales y de mercado son orientativas: verifícalas antes de tomar decisiones.</p>
+  </div>
+</footer>
+
+<script>
+// ---------- copiar ----------
+document.querySelectorAll('button.cp').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var el = document.getElementById(btn.dataset.copy);
+    if(!el) return;
+    var txt = el.innerText;
+    var done = function(){
+      var old = btn.textContent;
+      btn.textContent = '¡Copiado!';
+      btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = old; btn.classList.remove('done'); }, 1600);
+    };
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(txt).then(done, fallback);
+    } else { fallback(); }
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = txt; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); done(); }catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+});
+
+// ---------- checklist persistente ----------
+var KEY = 'jm-plan-30-v1';
+var boxes = Array.prototype.slice.call(document.querySelectorAll('.chk input'));
+var saved = {};
+try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){ saved = {}; }
+
+function paint(){
+  var total = boxes.length;
+  var n = boxes.filter(function(b){ return b.checked; }).length;
+  var pct = total ? Math.round(n*100/total) : 0;
+  document.getElementById('barfill').style.width = pct + '%';
+  document.getElementById('progtext').textContent = n + ' / ' + total + '  ·  ' + pct + '%';
+}
+boxes.forEach(function(b){
+  if(saved[b.dataset.k]) b.checked = true;
+  b.addEventListener('change', function(){
+    saved[b.dataset.k] = b.checked;
+    try{ localStorage.setItem(KEY, JSON.stringify(saved)); }catch(e){}
+    paint();
+  });
+});
+paint();
+
+// ---------- nav activo ----------
+var links = Array.prototype.slice.call(document.querySelectorAll('nav a.lnk'));
+var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+function onScroll(){
+  var pos = window.scrollY + 120, idx = 0;
+  secs.forEach(function(s,i){ if(s && s.offsetTop <= pos) idx = i; });
+  links.forEach(function(a,i){ a.classList.toggle('on', i === idx); });
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+</script>
+</body>
+</html>
