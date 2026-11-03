@@ -28,6 +28,10 @@ Para verlo: doble clic en el archivo, o `python3 -m http.server 8080` en esta ca
 | `cv/CV-Joaquin-Montenegro-Remoto.pdf` | CV nuevo, 1 página, para enviar |
 | `cv/CV-Joaquin-Montenegro-Remoto.docx` | El mismo CV, editable |
 | `foto/perfil-800.jpg` (y 400/600) | Foto de perfil recortada y ajustada, lista para subir |
+| `bares/folleto-A5-con-sangre.pdf` | **Folleto para bares de València**, 2 caras, listo para imprimir |
+| `bares/A4-2-por-hoja.pdf` | El mismo folleto, 2 por hoja, para imprimir en casa y cortar |
+| `bares/cartel-A4.pdf` | Cartel A4 para la barra o el escaparate |
+| `bares/notas-de-diseno.md` | Cómo imprimirlo, qué es humano y qué no, y cómo usarlo en la calle |
 | `plan/diagnostico-cv.md` | Los 10 problemas de tus CVs, uno por uno |
 | `plan/objetivo-3500.md` | Qué significa 3.500 €, los 6 escenarios y el dinero de esta semana |
 | `plan/oferta-freelance.md` | Tu servicio, precios, portfolio y los mensajes para vender |
@@ -39,6 +43,7 @@ Para verlo: doble clic en el archivo, o `python3 -m http.server 8080` en esta ca
 | `tools/generate_cv.py` | Regenera el `.docx` (`python3 tools/generate_cv.py`) |
 | `tools/generate_cv_pdf.py` | Regenera el `.pdf` (`python3 tools/generate_cv_pdf.py`) |
 | `tools/make_profile_photos.py` | Regenera la foto de perfil a partir del original |
+| `tools/make_flyer_bares.py` | Regenera folleto y cartel (`python3 tools/make_flyer_bares.py`) |
 
 ---
 
