@@ -35,6 +35,7 @@ Para verlo: doble clic en el archivo, o `python3 -m http.server 8080` en esta ca
 | `plataformas/linkedin.md` | Titular, extracto, experiencias, aptitudes y ajustes del perfil |
 | `plataformas/infojobs.md` | Perfil, presentación, búsquedas guardadas y 3 cartas de presentación |
 | `plataformas/jobtoday.md` | "Sobre mí" (2 versiones), certificaciones y guion del vídeo |
+| `plataformas/web.md` | Auditoría de joaq-card-connect.lovable.app y **todo el texto nuevo** sección por sección |
 | `tools/generate_cv.py` | Regenera el `.docx` (`python3 tools/generate_cv.py`) |
 | `tools/generate_cv_pdf.py` | Regenera el `.pdf` (`python3 tools/generate_cv_pdf.py`) |
 | `tools/make_profile_photos.py` | Regenera la foto de perfil a partir del original |
