@@ -27,6 +27,7 @@ Para verlo: doble clic en el archivo, o `python3 -m http.server 8080` en esta ca
 | `index.html` | **Panel principal.** Todo lo demás está también aquí, con botón de copiar |
 | `cv/CV-Joaquin-Montenegro-Remoto.pdf` | CV nuevo, 1 página, para enviar |
 | `cv/CV-Joaquin-Montenegro-Remoto.docx` | El mismo CV, editable |
+| `foto/perfil-800.jpg` (y 400/600) | Foto de perfil recortada y ajustada, lista para subir |
 | `plan/diagnostico-cv.md` | Los 10 problemas de tus CVs, uno por uno |
 | `plan/objetivo-3500.md` | Qué significa 3.500 €, los 6 escenarios y el dinero de esta semana |
 | `plan/oferta-freelance.md` | Tu servicio, precios, portfolio y los mensajes para vender |
@@ -36,6 +37,7 @@ Para verlo: doble clic en el archivo, o `python3 -m http.server 8080` en esta ca
 | `plataformas/jobtoday.md` | "Sobre mí" (2 versiones), certificaciones y guion del vídeo |
 | `tools/generate_cv.py` | Regenera el `.docx` (`python3 tools/generate_cv.py`) |
 | `tools/generate_cv_pdf.py` | Regenera el `.pdf` (`python3 tools/generate_cv_pdf.py`) |
+| `tools/make_profile_photos.py` | Regenera la foto de perfil a partir del original |
 
 ---
 
@@ -43,7 +45,7 @@ Para verlo: doble clic en el archivo, o `python3 -m http.server 8080` en esta ca
 
 1. **Cita en el SEPE.** Tienes 15 días hábiles desde el fin de contrato para pedir la prestación.
    Es lo más urgente que hay en todo este documento.
-2. **LinkedIn:** pega el titular y el extracto de `plataformas/linkedin.md` y activa "En remoto".
+2. **LinkedIn:** pega el titular y el extracto de `plataformas/linkedin.md`, sube `foto/perfil-800.jpg` y activa "En remoto".
 3. **InfoJobs:** sube el CV nuevo y crea las 7 alertas.
 4. **10 mensajes** a tus antiguos clientes de reformas (texto A de la sección Oferta).
 

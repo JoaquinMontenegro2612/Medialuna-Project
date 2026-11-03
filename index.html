@@ -179,6 +179,16 @@ tr.goal td:first-child{box-shadow:inset 3px 0 0 var(--amber)}
 .btn:hover{filter:brightness(1.08);text-decoration:none}
 footer{padding:44px 0 64px;color:var(--dim);font-size:13.5px}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14.4px}
+.hero-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.hero-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:50% 30%;
+  border:2px solid rgba(255,176,87,.45);flex:0 0 52px}
+.hero-top .eyebrow{margin:0}
+.foto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin:8px 0 4px}
+.foto-grid figure{margin:0}
+.foto-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;border:1px solid var(--line);display:block}
+.foto-grid figcaption{font-size:12.5px;color:var(--dim);margin-top:7px;line-height:1.4}
+.foto-grid figcaption b{color:var(--ink)}
+.circle-prev{width:88px;height:88px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
 .kv dt{color:var(--dim);font-weight:700}
 .kv dd{margin:0;color:var(--muted)}
 hr.soft{border:0;border-top:1px solid var(--line);margin:30px 0}
@@ -196,6 +206,7 @@ hr.soft{border:0;border-top:1px solid var(--line);margin:30px 0}
     <div class="brand">PLAN <span>3.500</span></div>
     <a class="lnk" href="#verdad">La verdad</a>
     <a class="lnk" href="#diagnostico">Diagnóstico</a>
+    <a class="lnk" href="#foto">Foto</a>
     <a class="lnk" href="#linkedin">LinkedIn</a>
     <a class="lnk" href="#infojobs">InfoJobs</a>
     <a class="lnk" href="#jobtoday">JobToday</a>
@@ -208,7 +219,10 @@ hr.soft{border:0;border-top:1px solid var(--line);margin:30px 0}
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow">Joaquín Montenegro · Patraix, València · nov 2026</p>
+    <div class="hero-top">
+      <img class="hero-avatar" src="foto/perfil-400.jpg" alt="Joaquín Montenegro">
+      <p class="eyebrow">Joaquín Montenegro · Patraix, València · nov 2026</p>
+    </div>
     <h1>De cero a <em>3.500 €/mes</em><br>trabajando desde casa</h1>
     <p class="lede">
       Tienes cuatro CVs y tres carreras distintas: <b>dos años y medio de desarrollo de software</b> (Power Platform,
@@ -352,10 +366,90 @@ hr.soft{border:0;border-top:1px solid var(--line);margin:30px 0}
   </div>
 </section>
 
+<!-- ============ FOTO ============ -->
+<section id="foto">
+  <div class="wrap">
+    <h2><span class="num">03</span>Tu foto de perfil</h2>
+    <p class="sub">Has mandado 11 imágenes: una generada con IA (la del traje) y diez fotos reales de la misma sesión. Ya la tienes resuelta — recortada, nivelada y con la luz corregida — sin tocar tu cara.</p>
+
+    <div class="grid g2" style="align-items:start">
+      <div class="card good">
+        <span class="tag t-grn">Usa esta</span>
+        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+          <img src="foto/perfil-600.jpg" alt="Foto de perfil elegida" style="width:150px;height:150px;object-fit:cover;border-radius:10px;border:1px solid var(--line)">
+          <div style="flex:1;min-width:170px">
+            <p class="small" style="margin:0 0 8px"><b>IMG-20260909-WA0008</b></p>
+            <p class="small" style="margin:0 0 6px">· La <b>más nítida</b> de las diez (varianza de 518 frente a 300-460 del resto).</p>
+            <p class="small" style="margin:0 0 6px">· La <b>mejor expresión</b>: sonrisa abierta, mirada a cámara, cara relajada.</p>
+            <p class="small" style="margin:0">· Encima de tus 10 fotos manda la misma regla: <b>la nitidez no se puede fingir</b> y es lo primero que se rompe cuando la plataforma reduce la imagen a 48 px.</p>
+          </div>
+        </div>
+        <div class="btnrow">
+          <a class="btn" href="foto/perfil-800.jpg" download>800 px · LinkedIn</a>
+          <a class="btn ghost" href="foto/perfil-400.jpg" download>400 px</a>
+          <a class="btn ghost" href="foto/perfil-600.jpg" download>600 px · InfoJobs / JobToday</a>
+        </div>
+      </div>
+
+      <div class="card warn">
+        <span class="tag t-red">No uses la del traje</span>
+        <h4>La imagen de Gemini no eres tú</h4>
+        <p class="small" style="margin:0 0 10px">Se nota: las manos, el reloj y el pelo están raros, la cara es más ancha, no llevas el pendiente y aparentas más años. Un reclutador no lo ve en el feed de 48 px, pero <b>sí lo ve en la videollamada</b> — y ahí ya no es un detalle estético, es que la persona de la foto no se presenta. Es la forma más tonta de perder una oferta.</p>
+        <p class="small" style="margin:0">Además transmite lo contrario de lo que quieres: un traje en una oficina inexistente grita "estoy intentando parecer otra cosa". En tecnología, la camiseta negra y una cara de confianza funcionan mejor.</p>
+      </div>
+    </div>
+
+    <h3>Cómo se ve en cada sitio</h3>
+    <div class="foto-grid">
+      <figure>
+        <img src="foto/perfil-800.jpg" alt="">
+        <figcaption><b>LinkedIn</b><br>800 × 800 px · cuadrada. Se recorta en círculo en el feed</figcaption>
+      </figure>
+      <figure>
+        <img src="foto/perfil-800.jpg" alt="" style="border-radius:50%;object-fit:cover;clip-path:circle(50%)">
+        <figcaption><b>Así se recorta en círculo</b><br>tu cara tiene que caber dentro: está centrada a propósito</figcaption>
+      </figure>
+      <figure>
+        <img src="foto/perfil-400.jpg" alt="" style="width:48px;height:48px;border-radius:50%;margin:36px auto;display:block">
+        <figcaption><b>A 48 px</b><br>el tamaño real del feed: sigue leyéndose la sonrisa</figcaption>
+      </figure>
+      <figure>
+        <img src="foto/perfil-600.jpg" alt="">
+        <figcaption><b>InfoJobs · JobToday</b><br>600 × 600 px. InfoJobs la muestra redonda también</figcaption>
+      </figure>
+    </div>
+
+    <h3>Qué he tocado (y qué no)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Sí</th><th>No</th></tr></thead>
+        <tbody>
+          <tr><td>Encuadre a cabeza y hombros, cara en el centro</td><td>Retocar la cara, la piel o los dientes</td></tr>
+          <tr><td>+4 % de luz y +7 % de contraste (la original estaba algo plana)</td><td>Borrar el pendiente, el tatuaje o la barba</td></tr>
+          <tr><td>Azulejo ligeramente desaturado y viñeta suave para que el fondo pese menos</td><td>Poner un fondo falso de oficina</td></tr>
+          <tr><td>Enfoque suave para que aguante la reducción a 48 px</td><td>Filtros, blanco y negro, o "estilo LinkedIn" artificial</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tiny" style="margin-top:10px">El script está en <code>tools/make_profile_photos.py</code>: si te haces otra foto, se vuelve a generar en un segundo.</p>
+
+    <h3>Si algún día te haces una mejor (5 minutos, sin gastar)</h3>
+    <ul class="clean">
+      <li><b>De pie junto a una ventana</b>, con la luz de frente o ligeramente de lado — nunca a contraluz ni con el flash del techo.</li>
+      <li><b>Pared lisa</b>, de un color que contraste con tu ropa. Un fondo de armario o una cortina valen.</li>
+      <li><b>La cámara a la altura de los ojos.</b> Si te hacen la foto desde abajo, pareces suplicar; desde arriba, pareces un anuncio de seguros.</li>
+      <li><b>Modo retrato del móvil</b> y <b>tres cuartos</b> de cuerpo, luego recortas. Que se te vean los hombros, no solo la cara.</li>
+      <li><b>20 fotos seguidas y eliges después.</b> La buena sale en la número 14, no en la segunda.</li>
+    </ul>
+
+    <div class="note"><b>Y en el CV: sin foto.</b> En perfiles técnicos la foto no suma y en muchos procesos se descarta por sesgo. Tu CV de una página ya va sin ella, y eso es lo correcto.</div>
+  </div>
+</section>
+
 <!-- ============ LINKEDIN ============ -->
 <section id="linkedin">
   <div class="wrap">
-    <h2><span class="num">03</span>LinkedIn</h2>
+    <h2><span class="num">04</span>LinkedIn</h2>
     <p class="sub">Es la plataforma nº1 para trabajo en remoto. Los reclutadores buscan por <b>palabras clave</b>, no porque suene bonito. Todo esto está escrito para que te encuentren buscando "Power Platform", "Power Automate", "Dynamics 365" y "remoto".</p>
 
     <h3>1 · Titular (máx. 220 caracteres)</h3>
@@ -480,7 +574,7 @@ Lo que me llevo: gestión de costes y márgenes con dinero real, trato con clien
         <tbody>
           <tr><td><b>URL personalizada</b></td><td>Editar perfil → Editar URL pública</td><td><span class="tiny">linkedin.com/in/joaquin-montenegro</span> (quita los números)</td></tr>
           <tr><td><b>Abierto a trabajar</b></td><td>Perfil → Open to work</td><td>Power Platform, Consultor Dynamics 365, Frontend, QA · Ubicación: <b>En remoto</b> · solo reclutadores</td></tr>
-          <tr><td><b>Foto</b></td><td>Perfil</td><td>Cara, fondo liso, camisa o camiseta lisa. Sin filtros</td></tr>
+          <tr><td><b>Foto</b></td><td>Perfil</td><td>La de <code>foto/perfil-800.jpg</code> (ya preparada, ver sección 03)</td></tr>
           <tr><td><b>Portada</b></td><td>Perfil</td><td>Banner simple: "Power Platform · Dynamics 365 · Automatización para pymes" (Canva, 1584×396)</td></tr>
           <tr><td><b>Destacado</b></td><td>Añadir sección → Destacado</td><td>GitHub, tu landing y el vídeo de presentación</td></tr>
           <tr><td><b>Versión en inglés</b></td><td>Configuración → Idiomas del perfil</td><td>Añade titular y extracto en inglés (reclutadores internacionales)</td></tr>
@@ -508,7 +602,7 @@ Lo que me llevo: gestión de costes y márgenes con dinero real, trato con clien
 <!-- ============ INFOJOBS ============ -->
 <section id="infojobs">
   <div class="wrap">
-    <h2><span class="num">04</span>InfoJobs</h2>
+    <h2><span class="num">05</span>InfoJobs</h2>
     <p class="sub">Aquí están las empresas españolas "normales", no solo startups. Tiene filtro de teletrabajo y publica muchas ofertas reales de Power Platform y Dynamics.</p>
 
     <h3>Datos de perfil</h3>
@@ -626,7 +720,7 @@ Joaquín Montenegro
 <!-- ============ JOBTODAY ============ -->
 <section id="jobtoday">
   <div class="wrap">
-    <h2><span class="num">05</span>JobToday</h2>
+    <h2><span class="num">06</span>JobToday</h2>
     <div class="note danger">
       <b>La verdad incómoda:</b> JobToday es hostelería, retail, logística y obra. Ahí <b>no vas a encontrar un
       trabajo en remoto con el ordenador</b>. Sirve para otra cosa: <b>caja rápida esta semana</b>. Y eso hoy lo
@@ -718,7 +812,7 @@ escríbeme por aquí. Gracias."</pre>
 <!-- ============ CV ============ -->
 <section id="cv">
   <div class="wrap">
-    <h2><span class="num">06</span>Tu CV nuevo</h2>
+    <h2><span class="num">07</span>Tu CV nuevo</h2>
     <p class="sub">Uno solo, de una página, una columna, sin tablas ni cajas: así lo leen bien los ATS (los filtros automáticos que descartan el 60 % de los CVs antes de que los vea un humano). Tu CV anterior de dos columnas salía desordenado al extraer el texto — eso es lo que ve un ATS.</p>
 
     <div class="grid g2">
@@ -754,7 +848,7 @@ escríbeme por aquí. Gracias."</pre>
 <!-- ============ OFERTA ============ -->
 <section id="oferta">
   <div class="wrap">
-    <h2><span class="num">07</span>Tu oferta: algo que la gente quiera pagarte</h2>
+    <h2><span class="num">08</span>Tu oferta: algo que la gente quiera pagarte</h2>
     <p class="sub">Esto es la parte que pediste: un servicio concreto, con precio, con cliente identificable y con una razón por la que te tienen que elegir a ti.</p>
 
     <h3>Cliente ideal (los primeros 90 días)</h3>
@@ -905,7 +999,7 @@ Te hago una pregunta rápida: ¿cómo estás haciendo los presupuestos ahora? Lo
 <!-- ============ DINERO ============ -->
 <section id="dinero">
   <div class="wrap">
-    <h2><span class="num">08</span>Las cuentas de verdad</h2>
+    <h2><span class="num">09</span>Las cuentas de verdad</h2>
     <p class="sub">Qué significa 3.500 €, los cinco escenarios hasta llegar y —lo primero— cómo conseguir dinero esta misma semana sin gastar un euro.</p>
 
     <h3>Primero: ¿qué son 3.500 €?</h3>
@@ -995,7 +1089,7 @@ Te hago una pregunta rápida: ¿cómo estás haciendo los presupuestos ahora? Lo
 <!-- ============ PLAN 30 ============ -->
 <section id="plan30">
   <div class="wrap">
-    <h2><span class="num">09</span>Plan de 30 días</h2>
+    <h2><span class="num">10</span>Plan de 30 días</h2>
     <p class="sub">Marca las casillas: se guardan en este navegador. Cada día, una tarea de cada canal. No empieces el día sin haber mandado 3 mensajes que puedan convertirse en dinero.</p>
 
     <div class="tbl-wrap" style="margin-bottom:26px">
@@ -1030,7 +1124,7 @@ Te hago una pregunta rápida: ¿cómo estás haciendo los presupuestos ahora? Lo
       <label class="chk"><input type="checkbox" data-k="w1d2a"><span>Pegar titular y extracto nuevos</span></label>
       <label class="chk"><input type="checkbox" data-k="w1d2b"><span>Reescribir las 3 experiencias técnicas + Medialuna y Experiencity</span></label>
       <label class="chk"><input type="checkbox" data-k="w1d2c"><span>Ordenar aptitudes (Power Platform, Power Automate, Dynamics 365 arriba)</span></label>
-      <label class="chk"><input type="checkbox" data-k="w1d2d"><span>URL limpia + foto + portada + "Abierto a trabajar → En remoto"</span></label>
+      <label class="chk"><input type="checkbox" data-k="w1d2d"><span>URL limpia + subir la foto nueva (la de <code>foto/</code>) + portada + "Abierto a trabajar → En remoto"</span></label>
       <label class="chk"><input type="checkbox" data-k="w1d2e"><span>Activar las 5 alertas de empleo con filtro En remoto</span></label>
 
       <div class="daylbl">Día 3 · InfoJobs + JobToday (2 h)</div>
