@@ -7,11 +7,18 @@ cinco**.
 Regla de uso: **un CV por posicionamiento, no un CV por oferta.** Con 5 CVs base y un ajuste de 10
 minutos por oferta tienes más que suficiente.
 
+> **Frontera de servicio (decidida el 5/11/2026).** Vendes y entregas **automatización, integraciones,
+> web y low-code**. **No** vendes implantaciones de CRM completas en Power Apps: no es un proyecto que
+> puedas cerrar en 15 horas ni con tu experiencia real. Para pymes, el CRM se revende y se configura
+> sobre herramientas existentes (HubSpot / Odoo), no se construye. Detalle y plan en `plan/crm-decision.md`.
+
 ---
 
 ## P1 · Consultor / Desarrollador Power Platform + Dynamics 365
 
 **Encaje:** máximo. Es lo único que tienes probado con nómina en dos empresas.
+**Alcance honesto:** piezas dentro de un proyecto (apps, flujos, entidades, integraciones), no la
+implantación completa ni la venta de un CRM cerrado a una pyme. Eso último, fuera de tu oferta.
 **Salario objetivo:** 30.000 – 42.000 € brutos (mid). No bajes de 28.000.
 **Dónde está el volumen:** Tecnoempleo, LinkedIn, InfoJobs. Consultoras y partners de Microsoft.
 

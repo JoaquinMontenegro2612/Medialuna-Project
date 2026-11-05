@@ -44,6 +44,7 @@ navegador; con `python3 -m http.server` se descargan.)
 | `plan/diagnostico-cv.md` | Los 10 problemas de tus CVs, uno por uno |
 | `plan/objetivo-3500.md` | Qué significa 3.500 €, los 6 escenarios y el dinero de esta semana |
 | `plan/oferta-freelance.md` | Tu servicio, precios, portfolio y los mensajes para vender |
+| `plan/crm-decision.md` | **CRM:** por qué no construir uno, los 3 niveles y qué decir en entrevistas |
 | `plan/plan-30-dias.md` | El plan día por día con objetivos y KPIs |
 | `plataformas/linkedin.md` | Titular, extracto, experiencias, aptitudes y ajustes del perfil |
 | `plataformas/infojobs.md` | Perfil, presentación, búsquedas guardadas y 3 cartas de presentación |

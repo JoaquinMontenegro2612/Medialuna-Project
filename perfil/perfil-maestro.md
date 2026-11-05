@@ -64,7 +64,7 @@ intenta averiguar en la llamada; si se lo das tú, ganas 20 minutos.
 | Competencia | Evidencia |
 |---|---|
 | Microsoft Dynamics 365 (CRM/CE) | Tigloo (12 m) + Softtek (7 m) |
-| Power Apps (canvas y model-driven) | Tigloo |
+| Power Apps (canvas y model-driven) | Tigloo. **Alcance:** piezas dentro de proyectos en equipo, no implantación completa de un CRM en solitario |
 | Power Automate (flujos, integraciones) | Tigloo |
 | Personalización de entidades/formularios/procesos | Tigloo, Softtek |
 | C# / .NET (plugins, SDK) | Softtek |
@@ -73,6 +73,10 @@ intenta averiguar en la llamada; si se lo das tú, ganas 20 minutos.
 | QA: pruebas funcionales, backend y móviles | Create Ape |
 | Git, Azure DevOps, Jira, Scrum | Las tres etapas técnicas |
 | Trato directo con cliente y toma de requisitos | Tigloo + negocio propio |
+
+> **Frontera que has puesto tú (5/11/2026):** automatizaciones, integraciones y web, sí. Un CRM
+> completo sobre Power Platform para una pyme, no. Es una decisión correcta y hay que respetarla en el
+> CV y en la venta: se cuenta el alcance real, no se promete el proyecto entero.
 
 ### Nivel B · Probado en proyectos propios (defendible, pero no en empresa)
 

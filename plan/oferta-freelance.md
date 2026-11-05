@@ -54,14 +54,16 @@ Automatización del presupuesto: formulario → PDF con tu logo → email al cli
 
 | Qué incluye | Precio |
 |---|---|
-| Power Apps o formulario web para hacer el presupuesto desde el móvil | **890 €** |
+| Formulario web (se abre en el móvil) que crea el presupuesto | **890 €** |
 | Generación automática de PDF con logo, partidas e IVA | incluido |
 | Envío automático al cliente + copia al dueño | incluido |
 | Registro de presupuestos y seguimiento (aviso a los 3 días si no contestan) | incluido |
 | Formación de 1 hora (en persona o videollamada) | incluido |
 | **Soporte y ajustes** | **79 €/mes** |
 
-Coste real: licencia Power Apps (~5-15 €/usuario/mes si el cliente la paga, o hazlo con herramientas gratuitas) + 16-25 horas de trabajo. **Margen: ~80 %.**
+**No se vende con Power Apps.** Se hace con web + Make/n8n o Power Automate, que es lo que puedes
+entregar en 15-20 h y sin depender de licencias. Coste real: 16-25 horas de trabajo + herramientas
+gratuitas. **Margen: ~80 %.** (Por qué, en `plan/crm-decision.md`.)
 
 Este es tu producto estrella. Se lo vendes a todo gremio que haga presupuestos, y todos los hacen.
 
@@ -74,6 +76,23 @@ Procesos internos: aprobaciones, avisos, integración de Excel/CRM, informes aut
 | Día completo (7 h) | **320 – 420 €/día** |
 | Proyecto cerrado (estimación por fases) | desde **1.200 €** |
 | Bolsa de 20 h prepago | **900 €** (45 €/h) |
+
+### Servicio 4 — "CRM de bolsillo" (solo con herramienta existente)
+
+Para negocios que **sí** persiguen presupuestos: clínicas, academias, gimnasios, inmobiliarias,
+distribuidores, talleres con mucho presupuesto. **No para bares.**
+
+| Qué incluye | Precio |
+|---|---|
+| Configuración de HubSpot o Zoho Bigin con el proceso real del negocio | **490 €** |
+| Importación de su Excel de clientes y campos propios | incluido |
+| Formulario web conectado + aviso automático al dueño | incluido |
+| Formación de 1 h y manual de una página | incluido |
+| Soporte y ajustes | **39 €/mes** |
+| Con web incluida (Pack Presencia + CRM) | **890 €** |
+
+Tiempo: 8-14 h el primero, 4-6 h los siguientes. **Nunca vendas un CRM construido a medida**: ver
+`plan/crm-decision.md`.
 
 ### Extras fáciles de vender (todo margen)
 - Auditoría de presencia digital + informe de 5 páginas: **150 €** (2 h de trabajo).
