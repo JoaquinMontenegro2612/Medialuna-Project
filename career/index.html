@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Career Engine · Joaquín Montenegro</title>
+<style>
+:root{
+  --bg:#0a0e11; --panel:#10171c; --panel-2:#141d23; --line:#1e2b33;
+  --ink:#e9f0f2; --muted:#8fa3ab; --dim:#647b84;
+  --amber:#ffb057; --green:#4ec9a0; --red:#ff7a6b; --blue:#6fb3ff; --violet:#b48cff;
+  --r:12px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--amber);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);padding:26px 0 22px;background:
+  radial-gradient(700px 180px at 12% 0%,rgba(255,176,87,.08),transparent 70%)}
+h1{font-size:26px;letter-spacing:-.02em;margin:0 0 4px;font-weight:800}
+h1 span{color:var(--amber)}
+.sub{color:var(--muted);font-size:14px;margin:0}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;background:var(--amber);color:#1a1206;font-weight:800;
+  font-size:13px;padding:9px 14px;border-radius:8px;border:0;cursor:pointer;font-family:inherit}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid #2a3a43}
+.btn:hover{filter:brightness(1.08)}
+.btn.sm{padding:6px 10px;font-size:12px}
+
+/* funnel */
+.funnel{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:20px 0 0}
+.f-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.f-card .k{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);font-weight:800}
+.f-card .v{font-size:23px;font-weight:800;letter-spacing:-.02em;margin-top:2px}
+.f-card.a .v{color:var(--amber)} .f-card.g .v{color:var(--green)} .f-card.b .v{color:var(--blue)}
+.f-card.v .v{color:var(--violet)}
+
+main{padding:26px 0 70px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 8px;margin-bottom:22px}
+.panel h2{font-size:16px;margin:0 0 3px;letter-spacing:-.01em}
+.panel .hint{color:var(--dim);font-size:12.5px;margin:0 0 14px}
+
+/* form */
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;margin-bottom:12px}
+.form label{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);font-weight:800;margin-bottom:3px}
+.form input,.form select,.form textarea{
+  width:100%;background:var(--panel-2);border:1px solid var(--line);color:var(--ink);
+  border-radius:7px;padding:8px 9px;font:inherit;font-size:13.5px}
+.form input:focus,.form select:focus,.form textarea:focus{outline:1px solid var(--amber);border-color:var(--amber)}
+.form .full{grid-column:1/-1}
+.form-actions{display:flex;gap:9px;align-items:center;padding-bottom:12px}
+
+/* table */
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 12px}
+.chip{background:var(--panel-2);border:1px solid var(--line);color:var(--muted);font-size:12px;
+  padding:5px 10px;border-radius:99px;cursor:pointer;font-weight:700}
+.chip.on{background:var(--amber);color:#1a1206;border-color:var(--amber)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13.4px;min-width:900px}
+th{text-align:left;padding:9px 11px;background:#0d1418;color:var(--dim);font-size:10.5px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:800;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 11px;border-bottom:1px solid #17242b;vertical-align:middle;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink);font-weight:700}
+.prio{display:inline-block;width:22px;height:22px;line-height:22px;text-align:center;border-radius:6px;
+  font-weight:900;font-size:12px}
+.prio.A{background:rgba(78,201,160,.15);color:var(--green)}
+.prio.B{background:rgba(255,176,87,.15);color:var(--amber)}
+.prio.C{background:rgba(111,179,255,.13);color:var(--blue)}
+.comp{font-variant-numeric:tabular-nums;font-weight:700}
+tr.done td{opacity:.55}
+select.st{background:var(--panel-2);border:1px solid var(--line);color:var(--ink);
+  border-radius:6px;padding:5px 7px;font:inherit;font-size:12.4px;max-width:150px}
+.icon-btn{background:none;border:0;color:var(--dim);cursor:pointer;font-size:15px;padding:2px 5px;border-radius:5px}
+.icon-btn:hover{color:var(--red);background:rgba(255,122,107,.1)}
+.rowbtn{background:none;border:0;color:var(--amber);font-size:12px;font-weight:700;cursor:pointer;padding:0}
+.empty{padding:26px;text-align:center;color:var(--dim);font-size:13.5px}
+tr.detail td{background:#0d1418;padding:0}
+.exp{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:4px 18px;padding:12px 14px}
+.exp label{display:flex;gap:8px;align-items:flex-start;font-size:12.6px;color:var(--muted);cursor:pointer;padding:3px 0}
+.exp input{accent-color:var(--green);margin-top:2px}
+.exp input:checked + span{color:var(--dim);text-decoration:line-through}
+
+/* links grid */
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:8px;padding-bottom:12px}
+a.lk{display:flex;flex-direction:column;gap:2px;background:var(--panel-2);border:1px solid var(--line);
+  border-radius:9px;padding:10px 12px;color:var(--ink);font-size:13px;font-weight:600}
+a.lk:hover{border-color:var(--amber);text-decoration:none}
+a.lk small{color:var(--dim);font-weight:500;font-size:11.5px}
+footer{padding:26px 0 60px;color:var(--dim);font-size:12.5px;border-top:1px solid var(--line)}
+@media(max-width:700px){h1{font-size:21px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap top">
+    <div>
+      <h1>Career Engine <span>·</span> Joaquín Montenegro</h1>
+      <p class="sub">Registro de candidaturas, expedientes y búsquedas. Todo se guarda en este navegador.</p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn ghost" id="btnExport">Exportar CSV</button>
+      <button class="btn ghost" id="btnReset">Vaciar</button>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="funnel" id="funnel"></div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="panel">
+      <h2>Nueva candidatura</h2>
+      <p class="hint">Añade la oferta en 30 segundos. La compatibilidad es tu estimación, no un dato objetivo: ponte entre 0 y 100 según cuántos requisitos cubres de verdad.</p>
+      <form class="form" id="form">
+        <div><label>Empresa</label><input name="empresa" required placeholder="Social You"></div>
+        <div><label>Puesto</label><input name="puesto" required placeholder="Consultor Power Platform"></div>
+        <div><label>Ubicación</label><input name="ubicacion" placeholder="Valencia / España"></div>
+        <div><label>Modalidad</label>
+          <select name="modalidad"><option>Remoto</option><option>Híbrido</option><option>Presencial</option><option>n/d</option></select>
+        </div>
+        <div><label>Salario</label><input name="salario" placeholder="32-38k / n/d"></div>
+        <div><label>Nivel</label>
+          <select name="nivel"><option>Junior</option><option>Mid</option><option>Senior</option><option>n/d</option></select>
+        </div>
+        <div><label>Compatibilidad %</label><input name="compat" type="number" min="0" max="100" value="70"></div>
+        <div><label>Prioridad</label>
+          <select name="prioridad"><option>A</option><option>B</option><option>C</option></select>
+        </div>
+        <div><label>Enlace</label><input name="enlace" placeholder="https://..."></div>
+        <div><label>Fecha</label><input name="fecha" type="date"></div>
+        <div class="full"><label>Nota</label><input name="nota" placeholder="Requisitos clave, red flag, contacto..."></div>
+        <div class="form-actions full"><button class="btn" type="submit">Añadir al registro</button></div>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h2>Registro de candidaturas</h2>
+      <p class="hint">Pulsa el nombre para abrir el expediente: los 7 entregables de cada candidatura. <b>No marques "Postulada" hasta ver la confirmación.</b></p>
+      <div class="filters" id="filters"></div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>Prio</th><th>Empresa / puesto</th><th>Ubicación</th><th>Modalidad</th>
+            <th>Salario</th><th>%</th><th>Estado</th><th>Fecha</th><th></th>
+          </tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Búsquedas preparadas</h2>
+      <p class="hint">Abre, filtra y aplica. Donde el filtro no venga en la URL, márcalo a mano.</p>
+      <div class="links" id="links"></div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Datos guardados solo en tu navegador · Exporta el CSV antes de cambiar de dispositivo o de limpiar el historial.
+  </div>
+</footer>
+
+<script>
+const KEY = 'jm-career-v1';
+const ESTADOS = ['Detectada','Por revisar','Seleccionada','CV adaptado','Preparada','Postulada','Contacto recruiter','Entrevista','Rechazada','Oferta'];
+const ENTREGABLES = [
+  '1 · Análisis de compatibilidad (requisitos vs. realidad)',
+  '2 · CV adaptado (keywords de la oferta)',
+  '3 · Carta de presentación',
+  '4 · Mensaje al recruiter (LinkedIn)',
+  '5 · Respuestas al formulario preparadas',
+  '6 · Expectativa salarial decidida',
+  '7 · Preparación de entrevista (3 preguntas trampa)'
+];
+
+const SEED = [
+  {empresa:'The Whiteam Consulting', puesto:'Consultor/a Power Platform (Apps/Automate/Power BI)', ubicacion:'España', modalidad:'Remoto', salario:'n/d', compat:88, nivel:'Mid', prioridad:'A', enlace:'https://careers.twtspain.com/jobs/7858768-consultor-a-power-platform-power-apps-power-automate-power-bi-remoto', nota:'Piden 1-5 años + Power Pages + Copilot Studio. Encaje casi calcado. VERIFICAR VIGENCIA'},
+  {empresa:'Capitole Consulting', puesto:'AI Automation Engineer (n8n)', ubicacion:'España', modalidad:'Remoto', salario:'n/d', compat:62, nivel:'Mid', prioridad:'A', enlace:'https://www.jobijoba.es/oferta-empleo/69/1d951cac8397ee22aebd6699b1cb2f5b', nota:'Piden n8n profesional demostrable. Necesitas la demo. Válida hasta 21/11/2026'},
+  {empresa:'Kave Home', puesto:'Junior AI Automation Engineer', ubicacion:'España', modalidad:'Remoto', salario:'n/d', compat:66, nivel:'Junior', prioridad:'A', enlace:'https://www.glassdoor.com/Job/spain-automation-jobs-SRCH_IL.0,5_IN219_KO6,16.htm', nota:'Valoran proyectos personales. Busca la oferta en su careers'},
+  {empresa:'Grupo Digital', puesto:'Product Owner Proxy', ubicacion:'España', modalidad:'Remoto', salario:'n/d', compat:55, nivel:'Mid', prioridad:'B', enlace:'https://www.tecnoempleo.com/ofertas-trabajo/valencia/agile', nota:'P4 sin certificación: solo si documentas un backlog'},
+  {empresa:'Serem', puesto:'Senior Business Analyst Dynamics 365', ubicacion:'España', modalidad:'Remoto', salario:'n/d', compat:64, nivel:'Senior', prioridad:'B', enlace:'https://www.tecnoempleo.com/ofertas-trabajo/valencia/agile', nota:'"Senior" pero P3 puro: aplica igual'},
+  {empresa:'Social You', puesto:'Senior Power Apps Developer / Architect', ubicacion:'España', modalidad:'Remoto', salario:'45-54k', compat:48, nivel:'Senior', prioridad:'C', enlace:'https://www.tecnoempleo.com/busqueda-empleo.php?te=Valencia', nota:'Mide tu brecha. No prioritario'},
+  {empresa:'Social You', puesto:'Especialista en Automatización IA Junior', ubicacion:'Barcelona', modalidad:'Híbrido', salario:'21-27k', compat:78, nivel:'Junior', prioridad:'C', enlace:'https://www.tecnoempleo.com/ofertas-trabajo/open-ai', nota:'POR DEBAJO de tu suelo (2.000 netos). Solo para practicar entrevistas'},
+  {empresa:'DKB Code Factory', puesto:'Technical Business Analyst', ubicacion:'Valencia', modalidad:'Híbrido', salario:'n/d', compat:70, nivel:'Mid', prioridad:'A', enlace:'https://es.indeed.com/Ofertas-de-Business-analyst-en-Valencia,-Valencia-provincia', nota:'P3 en tu ciudad. Piden SQL y BPMN: prepáralo'},
+  {empresa:'eXperience IT Solutions', puesto:'Business Analyst', ubicacion:'Almussafes (Valencia)', modalidad:'Híbrido', salario:'35-45k', compat:68, nivel:'Mid', prioridad:'A', enlace:'https://es.indeed.com/Ofertas-de-Business-analyst-en-Valencia,-Valencia-provincia', nota:'Sueldo publicado y alto. Piden SQL, Power BI, SAP: gap en SAP'},
+  {empresa:'Infoverity', puesto:'Consultant Data & Analytics (1-3 años)', ubicacion:'Valencia', modalidad:'Híbrido', salario:'n/d', compat:65, nivel:'Junior', prioridad:'B', enlace:'https://es.jooble.org/trabajo-analista-bi/Valencia', nota:'1-3 años: es tu banda. Inglés fluido'},
+  {empresa:'INEO Innovative Technologies', puesto:'Business Analyst / Product Owner', ubicacion:'Valencia', modalidad:'n/d', salario:'n/d', compat:72, nivel:'Mid', prioridad:'A', enlace:'https://es.jooble.org/trabajo-business-analyst/Valencia', nota:'P3 y P4 en una sola oferta'},
+  {empresa:'Deloitte', puesto:'Dynamics 365 CRM Senior Functional Consultant', ubicacion:'Valencia', modalidad:'n/d', salario:'n/d', compat:58, nivel:'Senior', prioridad:'B', enlace:'https://www.tecnoempleo.com/ofertas-trabajo/power-platform', nota:'Senior no te toca, pero Deloitte abre procesos junior: sigue su careers'},
+  {empresa:'Red Commerce', puesto:'Power Apps Consultant (autónomo 6+ meses)', ubicacion:'Valencia', modalidad:'Presencial', salario:'n/d', compat:75, nivel:'Mid', prioridad:'B', enlace:'https://bebee.com/es/jobs/role/consultor-de-gestion/valencia', nota:'Solo si sigues de alta como autónomo'},
+  {empresa:'Vitrolife Group', puesto:'Digital Product Owner', ubicacion:'Paterna (Valencia)', modalidad:'Híbrido', salario:'n/d', compat:42, nivel:'Senior', prioridad:'C', enlace:'https://es.indeed.com/Ofertas-de-Product-owner-en-Valencia,-Valencia-provincia', nota:'Piden 5+ años en producto. Gap claro'}
+];
+
+const LINKS = [
+  ['Tecnoempleo · teletrabajo','Remoto España ya filtrado','https://www.tecnoempleo.com/ofertas-trabajo/teletrabajo'],
+  ['Tecnoempleo · Power Platform','Marca 100% remoto','https://www.tecnoempleo.com/ofertas-trabajo/power-platform'],
+  ['Tecnoempleo · Power Apps','Marca 100% remoto','https://www.tecnoempleo.com/ofertas-trabajo/power-apps'],
+  ['Tecnoempleo · IA','Marca 100% remoto','https://www.tecnoempleo.com/ofertas-trabajo/inteligencia-artificial'],
+  ['Tecnoempleo · Valencia','245 ofertas activas','https://www.tecnoempleo.com/busqueda-empleo.php?te=Valencia'],
+  ['LinkedIn · Power Platform remoto','f_WT=2 · últimas 24 h','https://www.linkedin.com/jobs/search/?keywords=Power%20Platform&location=Espa%C3%B1a&f_WT=2'],
+  ['LinkedIn · AI Automation remoto','Últimas 24 h','https://www.linkedin.com/jobs/search/?keywords=AI%20Automation&location=Espa%C3%B1a&f_WT=2'],
+  ['LinkedIn · Business Analyst Valencia','Últimos 7 días','https://www.linkedin.com/jobs/search/?keywords=Business%20Analyst&location=Valencia%2C%20Comunidad%20Valenciana%2C%20Espa%C3%B1a'],
+  ['InfoJobs · power platform','Marca Teletrabajo','https://www.infojobs.net/jobsearch/search-results/list.xhtml?keyword=power+platform'],
+  ['InfoJobs · power apps','Marca Teletrabajo','https://www.infojobs.net/jobsearch/search-results/list.xhtml?keyword=power+apps'],
+  ['Indeed · Valencia','Activa Remoto/Híbrido','https://es.indeed.com/jobs?q=power+platform&l=Valencia'],
+  ['Jooble · Valencia datos','Analista BI / datos','https://es.jooble.org/trabajo-analista-bi/Valencia'],
+  ['GetOnBoard','Tech ES/LatAm, mucho remoto','https://www.getonbrd.com/jobs-programming'],
+  ['Welcome to the Jungle','España, remoto','https://www.welcometothejungle.com/es/jobs?query=power%20platform'],
+  ['Startups en Lever','site:jobs.lever.co','https://www.google.com/search?q=site%3Ajobs.lever.co+(%22power+platform%22+OR+%22n8n%22)+Spain'],
+  ['Startups en Greenhouse','site:boards.greenhouse.io','https://www.google.com/search?q=site%3Aboards.greenhouse.io+(%22power+apps%22+OR+%22automation%22)+remote']
+];
+
+let items = load();
+
+function load(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  const today = new Date().toISOString().slice(0,10);
+  return SEED.map((s,i)=>({id:'s'+i, fecha:today, estado:'Detectada', checks:{}, ...s}));
+}
+function save(){
+  try{ localStorage.setItem(KEY, JSON.stringify(items)); }catch(e){}
+}
+function esc(s){
+  return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+/* ---------- embudo ---------- */
+const SET_CV = ['CV adaptado','Preparada','Postulada','Contacto recruiter','Entrevista','Oferta'];
+const SET_ENV = ['Postulada','Contacto recruiter','Entrevista','Oferta'];
+
+function renderFunnel(){
+  const count = set => items.filter(i=>set.includes(i.estado)).length;
+  const data = [
+    ['Detectadas', items.length, 'a'],
+    ['CV adaptado +', count(SET_CV), 'b'],
+    ['Postuladas', count(SET_ENV), 'v'],
+    ['Entrevistas', count(['Entrevista','Oferta']), 'g'],
+    ['Ofertas', count(['Oferta']), 'g']
+  ];
+  document.getElementById('funnel').innerHTML = data.map(([k,v,c])=>
+    `<div class="f-card ${c}"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+}
+
+/* ---------- filtros ---------- */
+let filter = 'Todas';
+function renderFilters(){
+  const opts = ['Todas','A','B','C','Postuladas','Pendientes'];
+  document.getElementById('filters').innerHTML = opts.map(o=>
+    `<button class="chip ${filter===o?'on':''}" data-f="${o}">${o==='Pendientes'?'Sin postular':o}</button>`).join('');
+}
+
+/* ---------- tabla ---------- */
+let openId = null;
+function visible(){
+  return items.filter(i=>{
+    if(filter==='Todas') return true;
+    if(['A','B','C'].includes(filter)) return i.prioridad===filter;
+    if(filter==='Postuladas') return SET_ENV.includes(i.estado);
+    if(filter==='Pendientes') return !SET_ENV.includes(i.estado);
+    return true;
+  }).sort((a,b)=> a.prioridad.localeCompare(b.prioridad) || (b.compat||0)-(a.compat||0));
+}
+
+function renderRows(){
+  const tb = document.getElementById('rows');
+  const list = visible();
+  if(!list.length){ tb.innerHTML = '<tr><td colspan="9" class="empty">No hay candidaturas con este filtro.</td></tr>'; return; }
+  tb.innerHTML = list.map(i=>{
+    const done = ESTADOS.indexOf(i.estado) >= ESTADOS.indexOf('Rechazada') ? 'done' : '';
+    const opts = ESTADOS.map(e=>`<option ${e===i.estado?'selected':''}>${e}</option>`).join('');
+    const link = i.enlace ? `<a href="${esc(i.enlace)}" target="_blank" rel="noopener">abrir ↗</a>` : '—';
+    const det = openId===i.id ? `<tr class="detail"><td colspan="9"><div class="exp">
+      ${ENTREGABLES.map((e,k)=>`<label><input type="checkbox" data-chk="${i.id}" data-k="${k}" ${i.checks&&i.checks[k]?'checked':''}><span>${e}</span></label>`).join('')}
+      </div></td></tr>` : '';
+    return `<tr class="${done}">
+      <td><span class="prio ${i.prioridad}">${i.prioridad}</span></td>
+      <td><button class="rowbtn" data-open="${i.id}">${esc(i.empresa)}</button><br><b>${esc(i.puesto)}</b>
+          ${i.nota?`<div style="font-size:11.5px;color:var(--dim);margin-top:2px">${esc(i.nota)}</div>`:''}</td>
+      <td>${esc(i.ubicacion)}</td>
+      <td>${esc(i.modalidad)}</td>
+      <td>${esc(i.salario)}</td>
+      <td class="comp" style="color:${i.compat>=75?'var(--green)':i.compat>=55?'var(--amber)':'var(--dim)'}">${i.compat}%</td>
+      <td><select class="st" data-st="${i.id}">${opts}</select></td>
+      <td>${esc(i.fecha)}<div style="font-size:11.5px">${link}</div></td>
+      <td><button class="icon-btn" data-del="${i.id}" title="Eliminar">×</button></td>
+    </tr>${det}`;
+  }).join('');
+}
+
+function renderAll(){ renderFunnel(); renderRows(); }
+
+/* ---------- eventos ---------- */
+document.getElementById('form').addEventListener('submit', e=>{
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const o = {};
+  f.forEach((v,k)=>o[k]=v);
+  o.compat = Number(o.compat)||0;
+  o.id = 'c'+Date.now();
+  o.estado = 'Detectada';
+  o.checks = {};
+  if(!o.fecha) o.fecha = new Date().toISOString().slice(0,10);
+  items.push(o); save(); renderAll();
+  e.target.reset();
+  document.querySelector('#form [name=compat]').value = 70;
+});
+
+document.getElementById('filters').addEventListener('click', e=>{
+  const b = e.target.closest('[data-f]'); if(!b) return;
+  filter = b.dataset.f; renderFilters(); renderRows();
+});
+
+document.getElementById('rows').addEventListener('click', e=>{
+  const open = e.target.closest('[data-open]');
+  if(open){ openId = openId===open.dataset.open ? null : open.dataset.open; renderRows(); return; }
+  const del = e.target.closest('[data-del]');
+  if(del){
+    if(confirm('¿Eliminar esta candidatura del registro?')){
+      items = items.filter(i=>i.id!==del.dataset.del); save(); renderAll();
+    }
+  }
+});
+
+document.getElementById('rows').addEventListener('change', e=>{
+  const st = e.target.closest('[data-st]');
+  if(st){
+    const it = items.find(i=>i.id===st.dataset.st);
+    if(it){ it.estado = st.value; save(); renderFunnel(); renderRows(); }
+    return;
+  }
+  const chk = e.target.closest('[data-chk]');
+  if(chk){
+    const it = items.find(i=>i.id===chk.dataset.chk);
+    if(it){ it.checks = it.checks||{}; it.checks[chk.dataset.k] = chk.checked; save(); }
+  }
+});
+
+document.getElementById('btnExport').addEventListener('click', ()=>{
+  const head = ['Empresa','Puesto','Ubicación','Modalidad','Salario','Nivel','Compatibilidad','Prioridad','Estado','Fecha','Enlace','Nota','Entregables hechos'];
+  const rows = items.map(i=>[
+    i.empresa,i.puesto,i.ubicacion,i.modalidad,i.salario,i.nivel,i.compat,i.prioridad,i.estado,i.fecha,i.enlace,i.nota,
+    ENTREGABLES.reduce((n,_,k)=>n+(i.checks&&i.checks[k]?1:0),0)
+  ]);
+  const csv = '\ufeff' + [head,...rows].map(r=>r.map(c=>`"${String(c==null?'':c).replace(/"/g,'""')}"`).join(';')).join('\n');
+  const blob = new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'candidaturas-joaquin-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+});
+
+document.getElementById('btnReset').addEventListener('click', ()=>{
+  if(confirm('Esto borra tu registro y vuelve a las 14 ofertas de ejemplo. ¿Seguro? Exporta antes el CSV.')){
+    localStorage.removeItem(KEY); items = load(); save(); renderAll();
+  }
+});
+
+document.getElementById('links').innerHTML = LINKS.map(([t,s,u])=>
+  `<a class="lk" href="${u}" target="_blank" rel="noopener">${t}<small>${s}</small></a>`).join('');
+
+renderFilters();
+renderAll();
+</script>
+</body>
+</html>
