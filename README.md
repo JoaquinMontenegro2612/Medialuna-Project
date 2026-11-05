@@ -15,6 +15,9 @@ para gremios y pymes, hablando su idioma).
 copiar y pegar en cada plataforma, precios de tus servicios, los mensajes para conseguir clientes,
 las cuentas hasta los 3.500 y el plan de 30 días con casillas que se guardan.
 
+**`career/index.html`** — el registro de candidaturas: cada oferta con su estado, su compatibilidad,
+su enlace y los 7 entregables de su expediente. Se guarda en tu navegador y se exporta a CSV.
+
 Para verlo: doble clic en el archivo, o `python3 -m http.server 8080` en esta carpeta y abre
 `http://localhost:8080`.
 
@@ -32,6 +35,11 @@ Para verlo: doble clic en el archivo, o `python3 -m http.server 8080` en esta ca
 | `bares/A4-2-por-hoja.pdf` | El mismo folleto, 2 por hoja, para imprimir en casa y cortar |
 | `bares/cartel-A4.pdf` | Cartel A4 para la barra o el escaparate |
 | `bares/notas-de-diseno.md` | Cómo imprimirlo, qué es humano y qué no, y cómo usarlo en la calle |
+| `career/index.html` | **Career Engine.** Registro de candidaturas: embudo, estados, expediente y CSV |
+| `career/candidaturas.csv` | El mismo registro en hoja de cálculo |
+| `perfil/perfil-maestro.md` | Perfil maestro: experiencia real, niveles por tecnología, palabras clave ATS |
+| `perfil/posicionamientos.md` | Los 5 posicionamientos con titular y resumen listos para copiar |
+| `perfil/estrategia.md` | Ofertas detectadas, 15 búsquedas con URL, empresas objetivo y cadencia |
 | `plan/diagnostico-cv.md` | Los 10 problemas de tus CVs, uno por uno |
 | `plan/objetivo-3500.md` | Qué significa 3.500 €, los 6 escenarios y el dinero de esta semana |
 | `plan/oferta-freelance.md` | Tu servicio, precios, portfolio y los mensajes para vender |
