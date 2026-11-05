@@ -18,8 +18,9 @@ las cuentas hasta los 3.500 y el plan de 30 días con casillas que se guardan.
 **`career/index.html`** — el registro de candidaturas: cada oferta con su estado, su compatibilidad,
 su enlace y los 7 entregables de su expediente. Se guarda en tu navegador y se exporta a CSV.
 
-Para verlo: doble clic en el archivo, o `python3 -m http.server 8080` en esta carpeta y abre
-`http://localhost:8080`.
+Para verlo: doble clic en el archivo, o `python3 tools/serve.py 8080` en esta carpeta y abre
+`http://localhost:8080`. (Ese servidor sirve los `.md` y `.csv` como texto para que se abran en el
+navegador; con `python3 -m http.server` se descargan.)
 
 ---
 
@@ -52,6 +53,7 @@ Para verlo: doble clic en el archivo, o `python3 -m http.server 8080` en esta ca
 | `tools/generate_cv_pdf.py` | Regenera el `.pdf` (`python3 tools/generate_cv_pdf.py`) |
 | `tools/make_profile_photos.py` | Regenera la foto de perfil a partir del original |
 | `tools/make_flyer_bares.py` | Regenera folleto y cartel (`python3 tools/make_flyer_bares.py`) |
+| `tools/serve.py` | Servidor local del panel (`python3 tools/serve.py 8080`) |
 
 ---
 
